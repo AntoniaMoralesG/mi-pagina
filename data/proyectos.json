@@ -1,0 +1,42 @@
+[
+  {
+    "titulo": "Página Web Personal",
+    "descripcion": "Diseño y desarrollo de mi primera página web personal como espacio para documentar proyectos, aprendizajes e ideas en física, programación, robótica e innovación.",
+    "categoria": "Desarrollo web",
+    "icono": "🌐",
+    "enlace": "Proyectos/pagina_web_personal.html",
+    "destacado": true,
+    "fecha": "2026",
+    "tecnologias": ["HTML", "CSS", "JavaScript", "GitHub Pages"]
+  },
+  {
+    "titulo": "Robot Racer",
+    "descripcion": "Diseño y construcción de un robot velocista para seguimiento de línea, integrando sensores, control, electrónica y programación embebida.",
+    "categoria": "Robótica",
+    "icono": "🏎️",
+    "enlace": "proyectos/robot-racer.html",
+    "destacado": false,
+    "fecha": "2026",
+    "tecnologias": ["Arduino Nano", "Sensores IR", "Control", "Electrónica"]
+  },
+  {
+    "titulo": "Circuitos con Diodos",
+    "descripcion": "Simulación y análisis de circuitos con diodos, curva característica y rectificación de media onda.",
+    "categoria": "Electrónica",
+    "icono": "⚡",
+    "enlace": "proyectos/circuitos-diodos.html",
+    "destacado": false,
+    "fecha": "2026",
+    "tecnologias": ["Diodos", "Rectificación", "Simulación", "Electrónica"]
+  },
+  {
+    "titulo": "Física Computacional",
+    "descripcion": "Simulaciones numéricas de sistemas físicos usando métodos computacionales, integración numérica y análisis de energía.",
+    "categoria": "Programación",
+    "icono": "📊",
+    "enlace": "proyectos/fisica-computacional.html",
+    "destacado": false,
+    "fecha": "2026",
+    "tecnologias": ["Julia", "Python", "Métodos numéricos", "Simulación"]
+  }
+]
