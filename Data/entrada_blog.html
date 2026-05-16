@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Entrada — Antonia Morales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#e8417a;--pink-light:#f9c0d4;--lavender:#c9a8e8;--lilac:#ddc4f5;--bg:#f7f3fb;--dark:#2b2040;--mid:#6b5b8e;--border:rgba(201,168,232,.25);--card-bg:#ffffff;--input-bg:#f7f3fb;}
+body.dark{--bg:#0f0b1a;--dark:#f0eaf8;--mid:#c4aee0;--border:rgba(201,168,232,.15);--card-bg:#1e1630;--input-bg:#150f24;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;min-height:100vh;transition:background .35s,color .35s}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 5vw;background:rgba(247,243,251,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .35s}
+body.dark nav{background:rgba(15,11,26,.9)}
+.nav-left{display:flex;align-items:center;gap:.9rem}
+.logo-badge{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--lavender);display:flex;align-items:center;justify-content:center;position:relative;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--dark);letter-spacing:-.02em}
+.logo-text span{color:var(--lavender)}
+.logo-star{position:absolute;top:-4px;right:-4px;font-size:.55rem;color:var(--pink)}
+.nav-name-block{display:flex;flex-direction:column;line-height:1.2}
+.nav-fullname{font-size:.82rem;font-weight:600;color:var(--dark)}
+.nav-subtitle{font-size:.7rem;color:var(--pink)}
+nav ul{list-style:none;display:flex;gap:1.8rem}
+nav ul a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--mid);transition:color .2s;position:relative;padding-bottom:3px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav ul a .ni{font-size:.9rem}
+nav ul a:hover{color:var(--dark)}
+nav ul a.active{color:var(--dark);font-weight:600}
+nav ul a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--pink);border-radius:2px}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .2s;flex-shrink:0}
+
+/* BREADCRUMB */
+.breadcrumb{padding:5.5rem 5vw 0;display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--mid)}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb .sep{opacity:.4}
+
+/* PAGE LAYOUT */
+.page-wrap{padding:1.5rem 5vw 5rem;display:grid;grid-template-columns:1fr 280px;gap:3rem;max-width:1200px;margin:0 auto}
+
+/* LEFT */
+.entry-main{}
+
+/* Header grid: image left, title right */
+.entry-header{display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:start;margin-bottom:2.5rem}
+.entry-cover{border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#0a0a1a,#2a1050);height:240px;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.entry-title-block{}
+.entry-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:var(--dark);line-height:1.15;margin-bottom:.5rem}
+.entry-title .highlight{color:var(--lavender)}
+.entry-underline{width:40px;height:3px;background:var(--pink);border-radius:3px;margin:.6rem 0 1rem}
+.entry-meta-row{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.78rem;color:var(--mid);margin-bottom:.7rem}
+.entry-meta-row span{display:flex;align-items:center;gap:.3rem}
+.entry-author{font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:.4rem}
+
+/* Article body */
+.article-body{font-size:.92rem;font-weight:300;color:var(--mid);line-height:1.85}
+.article-section{margin-bottom:2.2rem}
+.article-h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--dark);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.article-h2 .dot{color:var(--pink);font-size:.55em}
+.article-body p{margin-bottom:.9rem}
+.article-body a{color:var(--pink);text-decoration:none}
+.article-body a:hover{text-decoration:underline}
+.highlight-word{color:var(--lavender);font-weight:500}
+
+/* Idea box */
+.idea-box{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;margin:1.2rem 0;display:grid;grid-template-columns:160px 1fr;gap:1.2rem;align-items:center}
+.idea-sketch{background:rgba(201,168,232,.08);border-radius:10px;height:110px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:1px dashed var(--lavender)}
+.idea-text p{font-size:.84rem;color:var(--mid);line-height:1.7}
+
+/* Process flow */
+.flow-row{display:flex;align-items:center;gap:.5rem;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:.8rem 1rem;margin:1rem 0;flex-wrap:wrap;gap:.6rem}
+.flow-step{display:inline-flex;align-items:center;gap:.35rem;font-size:.8rem;font-weight:500;color:var(--mid);padding:.3rem .7rem;border-radius:50px;background:var(--input-bg);border:1px solid var(--border)}
+.flow-arr{color:var(--lavender);font-size:.8rem}
+
+/* Check list */
+.check-list{list-style:none;margin:.6rem 0}
+.check-list li{font-size:.85rem;color:var(--mid);display:flex;align-items:flex-start;gap:.5rem;padding:.25rem 0}
+.check-list li::before{content:'✓';color:var(--pink);font-weight:700;flex-shrink:0;margin-top:.05rem}
+
+/* Mini gallery */
+.mini-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1rem 0}
+.mg-item{border-radius:12px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.mg1{background:linear-gradient(135deg,#0a0a1a,#1e1040)}
+.mg2{background:linear-gradient(135deg,#1a0800,#3a1800)}
+.mg3{background:linear-gradient(135deg,#001a00,#003300)}
+
+/* Atom deco */
+.atom-deco{position:absolute;right:0;font-size:3rem;opacity:.12;pointer-events:none}
+
+/* Post nav (prev/next) */
+.post-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.pn-item{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s;display:flex;flex-direction:column;gap:.3rem}
+.pn-item:hover{border-color:var(--lavender);transform:translateY(-2px)}
+.pn-dir{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--pink)}
+.pn-title{font-size:.85rem;font-weight:500;color:var(--dark)}
+.pn-icon{font-size:1.1rem;opacity:.5}
+.pn-item.next{text-align:right}
+
+/* Share bar */
+.share-bar{margin-top:2rem;text-align:center}
+.share-bar p{font-size:.85rem;font-weight:500;color:var(--dark);margin-bottom:.7rem}
+.share-icons{display:flex;justify-content:center;gap:.7rem}
+.share-icon{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--border);background:var(--card-bg);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none}
+.share-icon:hover{border-color:var(--lavender);transform:scale(1.1)}
+
+/* RIGHT SIDEBAR */
+.entry-sidebar{}
+.sc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:1.2rem;margin-bottom:1.2rem}
+.sc-title{font-size:.75rem;font-weight:600;color:var(--dark);margin-bottom:.9rem;display:flex;align-items:center;gap:.4rem}
+.sc-title .dot{color:var(--pink);font-size:.6em}
+.sc-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--border);gap:.5rem}
+.sc-row:last-child{border-bottom:none;padding-bottom:0}
+.sc-label{font-size:.76rem;color:var(--mid);display:flex;align-items:center;gap:.3rem;flex-shrink:0}
+.sc-value{font-size:.76rem;font-weight:500;color:var(--dark);text-align:right}
+
+/* TOC */
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.toc-list a{font-size:.8rem;color:var(--mid);text-decoration:none;display:flex;align-items:center;gap:.5rem;padding:.3rem .5rem;border-radius:8px;transition:background .2s,color .2s}
+.toc-list a:hover{background:rgba(201,168,232,.1);color:var(--dark)}
+.toc-icon{font-size:.75rem;opacity:.6}
+
+/* Related posts */
+.related-post{display:flex;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:opacity .2s}
+.related-post:last-child{border-bottom:none}
+.related-post:hover{opacity:.75}
+.rp-img{width:56px;height:42px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.ri1{background:linear-gradient(135deg,#0d1040,#2a1060)}
+.ri2{background:linear-gradient(135deg,#0d1f0d,#1a3a1a)}
+.ri3{background:linear-gradient(135deg,#1a0800,#4a2000)}
+.rp-body{}
+.rp-title{font-size:.78rem;font-weight:600;color:var(--dark);line-height:1.3;margin-bottom:.2rem}
+.rp-meta{font-size:.7rem;color:var(--mid);display:flex;gap:.4rem}
+.rp-cat{color:var(--pink)}
+
+/* CTA card */
+.cta-card{background:linear-gradient(135deg,rgba(232,65,122,.06),rgba(201,168,232,.1));border:1px solid rgba(232,65,122,.2);border-radius:16px;padding:1.3rem;text-align:center}
+.cta-card p{font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:.4rem}
+.cta-card .cta-sub{font-size:.78rem;font-weight:300;color:var(--mid);margin-bottom:.9rem}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--pink);color:#fff;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;padding:.55rem 1.1rem;border-radius:50px;text-decoration:none;transition:transform .2s;box-shadow:0 4px 14px rgba(232,65,122,.25)}
+.btn-cta:hover{transform:translateY(-2px)}
+
+/* footer */
+footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-sig{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--mid);display:flex;align-items:center;gap:.4rem}
+.footer-formula{font-size:.9rem;color:var(--mid);letter-spacing:.06em;opacity:.6}
+.footer-copy{font-size:.75rem;color:#aaa}
+.footer-socials{display:flex;gap:.6rem}
+.fs-icon{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.85rem;text-decoration:none;color:var(--mid);transition:border-color .2s}
+.fs-icon:hover{border-color:var(--pink);color:var(--pink)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.hmtl" class="logo-badge">
+      <span class="logo-text">A<span>M</span></span>
+      <span class="logo-star">✦</span>
+    </a>
+    <div class="nav-name-block">
+      <span class="nav-fullname">Antonia I. Morales Gutiérrez</span>
+      <span class="nav-subtitle">Ingeniería en Física</span>
+    </div>
+  </div>
+  <ul>
+    <li><a href="index.hmtl"><span class="ni">🏠</span>Inicio</a></li>
+    <li><a href="sobre_mi.html"><span class="ni">👤</span>Sobre mí</a></li>
+    <li><a href="proyectos.html"><span class="ni">📁</span>Proyectos</a></li>
+    <li><a href="blog.html" class="active"><span class="ni">📖</span>Blog</a></li>
+    <li><a href="index.hmtl#contacto"><span class="ni">✉️</span>Contacto</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️</button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="blog.html">Blog</a>
+  <span class="sep">›</span>
+  <span id="bc-cat">Robótica</span>
+</div>
+
+<div class="page-wrap">
+  <main class="entry-main">
+
+    <!-- HEADER -->
+    <div class="entry-header">
+      <div class="entry-cover" id="entry-cover">🏎️</div>
+      <div class="entry-title-block">
+        <h1 class="entry-title" id="entry-title">Cómo estoy construyendo mi <span class="highlight">Robot Racer</span></h1>
+        <div class="entry-underline"></div>
+        <div class="entry-meta-row">
+          <span>📅 28 de abril, 2024</span>
+          <span>⏱ 6 min lectura</span>
+          <span>🏷 Robótica</span>
+        </div>
+        <div class="entry-author">👤 Antonia I. Morales Gutiérrez</div>
+      </div>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-body">
+
+      <div class="article-section" id="contexto">
+        <h2 class="article-h2">Contexto <span class="dot">◆</span></h2>
+        <p>Siempre me han fascinado los sistemas que combinan <a href="#">percepción, decisión y acción</a> en tiempo real. Este proyecto nace de mi interés por la robótica autónoma y la <a href="#">mejora continua</a> a través de datos.</p>
+      </div>
+
+      <div class="article-section" id="idea-inicial">
+        <h2 class="article-h2">La idea inicial <span class="dot">◆</span></h2>
+        <div class="idea-box">
+          <div class="idea-sketch">📐</div>
+          <div class="idea-text">
+            <p>Quise construir un robot capaz de seguir una línea negra en un circuito utilizando sensores infrarrojos y un control PID que le permitiera corregir su trayectoria de forma suave y estable.</p>
+          </div>
+        </div>
+        <div class="flow-row">
+          <span class="flow-step">👁 Observar</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-step">✏️ Diseñar</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-step">🧪 Probar</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-step">🔧 Ajustar</span>
+        </div>
+      </div>
+
+      <div class="article-section" id="decisiones">
+        <h2 class="article-h2">Decisiones de diseño <span class="dot">◆</span></h2>
+        <p>Opté por un chasis bajo para mayor estabilidad, distribución de peso centrada y sensores IR frontales. El control PID me permite ajustar proporcional, integral y derivativo para reducir el error lateral.</p>
+        <ul class="check-list">
+          <li>Chasis 3D impreso: ligero y rígido</li>
+          <li>Sensores IR QTR-8A para detección de línea</li>
+          <li>Control PID para correcciones suaves</li>
+          <li>Motores DC con encoder para precisión</li>
+        </ul>
+      </div>
+
+      <div class="article-section" id="probando">
+        <h2 class="article-h2">Qué estoy probando ahora <span class="dot">◆</span></h2>
+        <p>Estoy afinando los parámetros del PID, probando diferentes valores de velocidad y filtrado de señales para lograr estabilidad incluso en curvas cerradas.</p>
+        <div class="mini-gallery">
+          <div class="mg-item mg1">🏎️</div>
+          <div class="mg-item mg2">🔌</div>
+          <div class="mg-item mg3">📊</div>
+        </div>
+      </div>
+
+      <div class="article-section" id="aprendido">
+        <h2 class="article-h2">Lo que he aprendido <span class="dot">◆</span></h2>
+        <p>Cada iteración me enseña algo nuevo: a medir, a ser paciente y a entender que los pequeños ajustes marcan una gran diferencia. La ingeniería es ensayo, error y curiosidad constante.</p>
+      </div>
+
+      <div class="article-section" id="proximo">
+        <h2 class="article-h2">Próximo paso <span class="dot">◆</span></h2>
+        <p>Quiero añadir comunicación inalámbrica para visualizar datos en tiempo real y explorar algoritmos de navegación más avanzados. ¡Seguimos construyendo!</p>
+      </div>
+
+    </div>
+
+    <!-- SHARE -->
+    <div class="share-bar">
+      <p>Comparte esta entrada</p>
+      <div class="share-icons">
+        <a href="https://www.linkedin.com/in/antonia-morales-guti%C3%A9rrez-534b05297/" target="_blank" class="share-icon">in</a>
+        <a href="#" class="share-icon">🐙</a>
+        <a href="#" class="share-icon">𝕏</a>
+        <a href="mailto:?subject=Entrada interesante&body=Te comparto esto:" class="share-icon">✉️</a>
+      </div>
+    </div>
+
+    <!-- PREV / NEXT -->
+    <div class="post-nav">
+      <a href="entrada_blog.html?id=organizar-ideas" class="pn-item">
+        <span class="pn-dir">← Entrada anterior</span>
+        <span class="pn-icon">📔</span>
+        <span class="pn-title">Cómo empecé en la robótica: mi primer robot</span>
+      </a>
+      <a href="entrada_blog.html?id=arduino-esp32" class="pn-item next">
+        <span class="pn-dir">Siguiente entrada →</span>
+        <span class="pn-icon">📡</span>
+        <span class="pn-title">Mejorando la estabilidad con control PID</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="entry-sidebar">
+
+    <!-- Meta card -->
+    <div class="sc-card">
+      <div class="sc-title">📋 Ficha de la entrada <span class="dot">◆</span></div>
+      <div class="sc-row"><span class="sc-label">🎯 Tema</span><span class="sc-value">Robot seguidor de línea con sensores IR y control PID</span></div>
+      <div class="sc-row"><span class="sc-label">📁 Proyecto relacionado</span><span class="sc-value">Robot Racer</span></div>
+      <div class="sc-row"><span class="sc-label">🔧 Herramientas</span><span class="sc-value">Arduino/ESP32, sensores IR, control PID, chasis 3D impreso</span></div>
+      <div class="sc-row"><span class="sc-label">📊 Estado</span><span class="sc-value">En pruebas (y muchas iteraciones)</span></div>
+      <div style="text-align:center;margin-top:.6rem;font-size:1.8rem;opacity:.2">⚛️</div>
+    </div>
+
+    <!-- TOC -->
+    <div class="sc-card">
+      <div class="sc-title">📑 Tabla de contenidos</div>
+      <ul class="toc-list">
+        <li><a href="#contexto"><span class="toc-icon">📖</span> Contexto</a></li>
+        <li><a href="#idea-inicial"><span class="toc-icon">💡</span> La idea inicial</a></li>
+        <li><a href="#decisiones"><span class="toc-icon">⚙️</span> Decisiones de diseño</a></li>
+        <li><a href="#probando"><span class="toc-icon">🧪</span> Qué estoy probando ahora</a></li>
+        <li><a href="#aprendido"><span class="toc-icon">🎓</span> Lo que he aprendido</a></li>
+        <li><a href="#proximo"><span class="toc-icon">🚀</span> Próximo paso</a></li>
+      </ul>
+    </div>
+
+    <!-- Related -->
+    <div class="sc-card">
+      <div class="sc-title">🔗 Notas relacionadas <span class="dot">◆</span></div>
+      <a href="entrada_blog.html?id=arduino-esp32" class="related-post">
+        <div class="rp-img ri1">🔌</div>
+        <div class="rp-body">
+          <div class="rp-title">Arduino Nano vs ESP32 para robótica</div>
+          <div class="rp-meta"><span class="rp-cat">Robótica</span><span>·</span><span>7 min</span></div>
+        </div>
+      </a>
+      <a href="entrada_blog.html?id=metodos-numericos" class="related-post">
+        <div class="rp-img ri2">📊</div>
+        <div class="rp-body">
+          <div class="rp-title">Qué es el control PID</div>
+          <div class="rp-meta"><span class="rp-cat">Robótica</span><span>·</span><span>6 min</span></div>
+        </div>
+      </a>
+      <a href="entrada_blog.html?id=diodos-ltspice" class="related-post">
+        <div class="rp-img ri3">⚡</div>
+        <div class="rp-body">
+          <div class="rp-title">Errores comunes al construir un robot velocista</div>
+          <div class="rp-meta"><span class="rp-cat">Robótica</span><span>·</span><span>5 min</span></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-card">
+      <p>¿Te interesa colaborar o tienes preguntas?</p>
+      <p class="cta-sub">Estoy abierta a conversar sobre robótica, control, instrumentación y ciencia aplicada.</p>
+      <a href="index.hmtl#contacto" class="btn-cta">Escríbeme →</a>
+    </div>
+
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-sig">Antonia I. Morales Gutiérrez ♡</div>
+  <span class="footer-copy">© 2024 Antonia I. Morales Gutiérrez. Todos los derechos reservados.</span>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/antonia-morales-guti%C3%A9rrez-534b05297/" target="_blank" class="fs-icon">in</a>
+    <a href="#" class="fs-icon">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+    <a href="#" class="fs-icon">📸</a>
+  </div>
+  <span class="footer-formula">E = mc²</span>
+</footer>
+
+<script>
+function toggleTheme(){
+  const b=document.body,btn=document.getElementById('themeToggle');
+  const d=b.classList.toggle('dark');
+  btn.textContent=d?'🌙':'☀️';
+  localStorage.setItem('am_theme',d?'dark':'light');
+}
+(function(){
+  const s=localStorage.getItem('am_theme');
+  if(s==='dark'){document.body.classList.add('dark');const b=document.getElementById('themeToggle');if(b)b.textContent='🌙';}
+})();
+
+const posts={
+  'robot-racer':{title:'Cómo estoy construyendo mi <span class="highlight">Robot Racer</span>',cat:'Robótica',cover:'🏎️'},
+  'arduino-esp32':{title:'Arduino Nano vs <span class="highlight">ESP32</span> para robótica',cat:'Electrónica aplicada',cover:'🔌'},
+  'diodos-ltspice':{title:'Qué aprendí simulando <span class="highlight">circuitos con diodos</span>',cat:'Electrónica aplicada',cover:'⚡'},
+  'metodos-numericos':{title:'Por qué los <span class="highlight">métodos numéricos</span> pueden perder energía',cat:'Simulación física',cover:'📊'},
+  'instrumentacion-optica':{title:'Qué es la <span class="highlight">instrumentación óptica</span>',cat:'Instrumentación',cover:'🔭'},
+  'organizar-ideas':{title:'Cómo <span class="highlight">organizo mis ideas</span> antes de prototipar',cat:'Aprendizajes',cover:'📔'},
+  'aprender-ingenieria':{title:'<span class="highlight">Aprender haciendo</span> en ingeniería',cat:'Liderazgo STEM',cover:'🤖'},
+};
+const id=new URLSearchParams(location.search).get('id')||'robot-racer';
+const p=posts[id]||posts['robot-racer'];
+document.getElementById('entry-title').innerHTML=p.title;
+document.getElementById('entry-cover').textContent=p.cover;
+document.getElementById('bc-cat').textContent=p.cat;
+document.title=p.title.replace(/<[^>]+>/g,'').trim()+' — Antonia Morales';
+</script>
+</body>
+</html>
