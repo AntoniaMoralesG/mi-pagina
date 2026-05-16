@@ -15,11 +15,11 @@
 
 ## 🌸 Descripción del proyecto
 
-Este repositorio contiene el código fuente de mi página web personal, desarrollada como un proyecto propio para presentar mi perfil, mis proyectos, mis intereses académicos y mi trabajo relacionado con física, programación, robótica e innovación.
+Este repositorio contiene el código fuente de mi página web personal, desarrollada como un proyecto propio para presentar mi perfil,  proyectos, intereses académicos y  trabajo relacionado con física, programación, robótica e innovación.
 
-La página fue creada con el objetivo de construir un espacio digital personal donde pueda mostrar de forma ordenada mi trayectoria, mis proyectos y futuras publicaciones.
+La página fue creada con el objetivo de construir un espacio digital personal donde pueda mostrar de forma ordenada mis proyectos, ideas y futuras publicaciones.
 
-La idea principal fue diseñar una página que representara mi identidad académica y profesional, combinando elementos visuales, navegación simple y una estética personalizada.
+La idea principal fue diseñar una página que representara mi identidad académica y profesional, combinando elementos visuales, navegación simple y una estética personalizada muy bonita que de momento no considero que sea formal ni muy profesional.
 
 ---
 
@@ -55,7 +55,7 @@ La página fue una forma práctica de explorar desarrollo web, organización de 
 
 También fue importante aprender a utilizar distintas herramientas de manera efectiva dentro de un flujo de trabajo real. En este proceso combiné edición manual de código, pruebas locales, control de versiones y apoyo de herramientas de inteligencia artificial para avanzar de forma más ordenada y eficiente.
 
-La primera versión funcional de la página fue desarrollada en menos de una semana, lo que refleja un proceso intensivo de aprendizaje, experimentación, corrección de errores y mejora progresiva.
+La primera versión funcional y publicada de la página fue desarrollada en menos de una semana, lo que refleja un proceso intensivo de aprendizaje, experimentación, corrección de errores y mejora progresiva.
 
 ---
 
