@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proyectos — Antonia Morales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#e8417a;--pink-light:#f9c0d4;--lavender:#c9a8e8;--lilac:#ddc4f5;
+  --bg:#f7f3fb;--dark:#2b2040;--mid:#6b5b8e;--border:rgba(201,168,232,.25);
+  --card-bg:#ffffff;--input-bg:#f7f3fb;
+}
+body.dark{--bg:#0f0b1a;--dark:#f0eaf8;--mid:#c4aee0;--border:rgba(201,168,232,.15);--card-bg:#1e1630;--input-bg:#150f24;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;min-height:100vh;transition:background .35s,color .35s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 5vw;background:rgba(247,243,251,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .35s}
+body.dark nav{background:rgba(15,11,26,.9)}
+.nav-left{display:flex;align-items:center;gap:.9rem}
+.logo-badge{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--lavender);display:flex;align-items:center;justify-content:center;position:relative;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--dark);letter-spacing:-.02em}
+.logo-text span{color:var(--lavender)}
+.logo-star{position:absolute;top:-4px;right:-4px;font-size:.55rem;color:var(--pink)}
+.nav-name-block{display:flex;flex-direction:column;line-height:1.2}
+.nav-fullname{font-size:.82rem;font-weight:600;color:var(--dark);letter-spacing:.04em}
+.nav-subtitle{font-size:.7rem;font-weight:400;color:var(--pink)}
+nav ul{list-style:none;display:flex;gap:1.8rem}
+nav ul a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--mid);transition:color .2s;position:relative;padding-bottom:3px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav ul a .nav-icon{font-size:.95rem}
+nav ul a:hover{color:var(--dark)}
+nav ul a.active{color:var(--dark);font-weight:600}
+nav ul a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--pink);border-radius:2px}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .2s;flex-shrink:0}
+.theme-toggle:hover{transform:scale(1.1)}
+
+/* PAGE LAYOUT */
+.page-wrap{padding-top:4.5rem;min-height:100vh;display:grid;grid-template-columns:220px 1fr;gap:0}
+
+/* SIDEBAR */
+.sidebar{padding:2.5rem 1.5rem 2rem;border-right:1px solid var(--border);position:sticky;top:4.5rem;height:calc(100vh - 4.5rem);overflow-y:auto}
+.sidebar-section{margin-bottom:2rem}
+.sidebar-title{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.stat-item{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.stat-icon{width:38px;height:38px;border-radius:10px;background:rgba(232,65,122,.08);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--dark);line-height:1}
+.stat-label{font-size:.72rem;color:var(--mid);line-height:1.3}
+.area-item{display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--mid);padding:.3rem 0;cursor:pointer;transition:color .2s;text-decoration:none}
+.area-item:hover{color:var(--pink)}
+.area-item .ai{font-size:.9rem}
+.sidebar-quote{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.1rem;margin-top:1rem}
+.sidebar-quote .qq{font-size:1.4rem;color:var(--lavender);line-height:1;margin-bottom:.4rem}
+.sidebar-quote p{font-size:.8rem;font-style:italic;color:var(--mid);line-height:1.6}
+.sidebar-atom{text-align:center;margin-top:.8rem;font-size:1.6rem;opacity:.4}
+
+/* MAIN */
+.main-content{padding:2.5rem 3rem 4rem}
+
+/* Hero strip */
+.projects-hero{display:grid;grid-template-columns:1fr 260px;gap:2rem;align-items:center;margin-bottom:2.5rem;position:relative}
+.projects-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,4vw,4rem);font-weight:900;line-height:1;letter-spacing:-.03em}
+.projects-hero h1 span{color:var(--lavender)}
+.projects-hero p{margin-top:1rem;font-size:.92rem;font-weight:300;color:var(--mid);line-height:1.75;max-width:400px}
+.hero-underline{width:50px;height:3px;background:var(--pink);border-radius:3px;margin:.7rem 0}
+.hero-deco-atom{opacity:.25;font-size:5rem;text-align:center}
+.sparkle{position:absolute;color:var(--lavender);font-size:.8rem;opacity:.6}
+.sparkle.s1{top:0;right:260px}
+.sparkle.s2{bottom:10px;left:45%}
+
+/* Filter tabs */
+.filter-tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;padding:.45rem 1rem;border-radius:50px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--mid);cursor:pointer;transition:all .2s}
+.tab-btn:hover{border-color:var(--lavender);color:var(--dark)}
+.tab-btn.active{background:var(--pink);border-color:var(--pink);color:#fff}
+.tab-icon{font-size:.85rem}
+
+/* Projects grid */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:3rem}
+.proj-card{background:var(--card-bg);border-radius:18px;overflow:hidden;border:1px solid var(--border);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(100,60,160,.13)}
+.proj-card-img{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.ph-race {background:linear-gradient(135deg,#0a0a1a,#1e1040)}
+.ph-circuit{background:linear-gradient(135deg,#1a0800,#4a2000)}
+.ph-physics{background:linear-gradient(135deg,#0d1f0d,#1a3a2a)}
+.ph-optic {background:linear-gradient(135deg,#001a1a,#003333)}
+.ph-arduino{background:linear-gradient(135deg,#001a0d,#003320)}
+.ph-cad   {background:linear-gradient(135deg,#0d0d2e,#1a1a4e)}
+.proj-card-img .cat-badge{position:absolute;bottom:.7rem;left:.7rem;font-size:.68rem;font-weight:600;padding:.25rem .7rem;border-radius:50px;color:#fff}
+.cb-rob{background:rgba(232,65,122,.85)}
+.cb-ele{background:rgba(100,60,200,.8)}
+.cb-prog{background:rgba(50,120,200,.8)}
+.cb-opt{background:rgba(0,160,150,.8)}
+.proj-card-body{padding:1.1rem 1.2rem 1.3rem;flex:1;display:flex;flex-direction:column}
+.proj-card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;line-height:1.3}
+.proj-card-desc{font-size:.81rem;font-weight:300;color:var(--mid);line-height:1.65;flex:1}
+.proj-card-actions{display:flex;align-items:center;gap:.7rem;margin-top:1rem}
+.btn-ver{display:inline-flex;align-items:center;gap:.35rem;background:transparent;border:1.5px solid var(--pink);color:var(--pink);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;padding:.38rem .9rem;border-radius:50px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s}
+.btn-ver:hover{background:var(--pink);color:#fff}
+.proj-icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--input-bg);display:flex;align-items:center;justify-content:center;font-size:.85rem;cursor:pointer;text-decoration:none;transition:border-color .2s,transform .2s;color:var(--mid)}
+.proj-icon-btn:hover{border-color:var(--lavender);transform:scale(1.1)}
+
+/* Featured project banner */
+.featured-banner{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:1.8rem 2rem;display:grid;grid-template-columns:220px 1fr auto;gap:2rem;align-items:center;margin-bottom:2rem}
+.featured-banner-img{border-radius:14px;overflow:hidden;height:130px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,#0a0a1a,#1e1040)}
+.featured-label{display:flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.7rem}
+.star-badge{background:var(--pink);color:#fff;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem}
+.featured-sep{flex:1;height:1px;background:var(--border)}
+.featured-cat{font-size:.72rem;font-weight:500;padding:.22rem .7rem;border-radius:50px;background:rgba(232,65,122,.1);color:var(--pink);margin-bottom:.5rem;display:inline-block}
+.featured-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--dark);line-height:1.15;margin-bottom:.6rem}
+.featured-desc{font-size:.85rem;font-weight:300;color:var(--mid);line-height:1.7;max-width:420px;margin-bottom:1rem}
+.featured-chips{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+.chip-sm{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--mid);background:var(--input-bg);border:1px solid var(--border);border-radius:50px;padding:.25rem .75rem}
+.featured-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-pink-solid{display:inline-flex;align-items:center;gap:.4rem;background:var(--pink);color:#fff;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;padding:.6rem 1.3rem;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(232,65,122,.3)}
+.btn-pink-solid:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,65,122,.4)}
+.btn-ghost-sm{display:inline-flex;align-items:center;gap:.4rem;background:var(--input-bg);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;padding:.5rem 1rem;border-radius:50px;border:1px solid var(--border);text-decoration:none;transition:border-color .2s,color .2s}
+.btn-ghost-sm:hover{border-color:var(--lavender);color:var(--dark)}
+.featured-meta{display:flex;flex-direction:column;gap:.8rem;align-items:flex-end}
+.trophy{font-size:2rem;opacity:.5}
+.feat-info-item{font-size:.78rem;color:var(--mid);text-align:right}
+.feat-info-label{font-weight:600;color:var(--dark);font-size:.75rem}
+
+/* Footer */
+footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;transition:background .35s}
+.footer-sig{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--mid);display:flex;align-items:center;gap:.4rem}
+.footer-formula{font-size:.9rem;color:var(--mid);letter-spacing:.06em;opacity:.6}
+.footer-copy{font-size:.75rem;color:#aaa}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.hmtl" class="logo-badge">
+      <span class="logo-text">A<span>M</span></span>
+      <span class="logo-star">✦</span>
+    </a>
+    <div class="nav-name-block">
+      <span class="nav-fullname">Antonia I. Morales Gutiérrez</span>
+      <span class="nav-subtitle">Ingeniería en Física</span>
+    </div>
+  </div>
+  <ul>
+    <li><a href="index.hmtl"><span class="nav-icon"></span>Inicio</a></li>
+    <li><a href="proyectos.html" class="active"><span class="nav-icon"></span>Proyectos</a></li>
+    <li><a href="sobre-mi.html"><span class="nav-icon"></span>Sobre mí</a></li>
+    <li><a href="blog.html"><span class="nav-icon"></span>Blog</a></li>
+    <li><a href="index.hmtl#contacto"><span class="nav-icon"></span>Contacto</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️</button>
+</nav>
+
+<div class="page-wrap">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">✦ Resumen</div>
+      <div class="stat-item">
+        <div class="stat-icon">📁</div>
+        <div><div class="stat-num">6</div><div class="stat-label">Proyectos<br>académicos y personales</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">⚛️</div>
+        <div><div class="stat-num">6</div><div class="stat-label">Áreas<br>de interés cubiertas</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">&lt;/&gt;</div>
+        <div><div class="stat-num">18+</div><div class="stat-label">Herramientas<br>y tecnologías usadas</div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">✦ Áreas de interés</div>
+      <a href="#" class="area-item" onclick="filterProjects('Robótica')"><span class="ai">🤖</span> Robótica</a>
+      <a href="#" class="area-item" onclick="filterProjects('Electrónica')"><span class="ai">⚡</span> Electrónica</a>
+      <a href="#" class="area-item" onclick="filterProjects('Programación')"><span class="ai">&lt;/&gt;</span> Programación</a>
+      <a href="#" class="area-item" onclick="filterProjects('Óptica')"><span class="ai">🔭</span> Física Computacional</a>
+      <a href="#" class="area-item" onclick="filterProjects('Óptica')"><span class="ai">👁</span> Óptica</a>
+      <a href="#" class="area-item" onclick="filterProjects('Investigación')"><span class="ai">🔬</span> Instrumentación</a>
+    </div>
+
+    <div class="sidebar-quote">
+      <div class="qq">"</div>
+      <p>La física explica el mundo,<br>la ingeniería lo transforma.</p>
+    </div>
+    <div class="sidebar-atom">⚛️</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <div class="projects-hero">
+      <div>
+        <span class="sparkle s1">✦</span>
+        <h1>Mis <span>proyectos</span></h1>
+        <div class="hero-underline"></div>
+        <p>Una colección de proyectos académicos y personales que reflejan mi pasión por la física aplicada, la tecnología y la resolución creativa de problemas.</p>
+      </div>
+      <div class="hero-deco-atom">⚛️</div>
+      <span class="sparkle s2">✦</span>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs" id="filterTabs">
+      <button class="tab-btn active" onclick="filterProjects('Todos',this)"><span class="tab-icon">⊞</span> Todos</button>
+      <button class="tab-btn" onclick="filterProjects('Robótica',this)"><span class="tab-icon">🤖</span> Robótica</button>
+      <button class="tab-btn" onclick="filterProjects('Electrónica',this)"><span class="tab-icon">⚡</span> Electrónica</button>
+      <button class="tab-btn" onclick="filterProjects('Programación',this)"><span class="tab-icon">&lt;/&gt;</span> Programación</button>
+      <button class="tab-btn" onclick="filterProjects('Óptica',this)"><span class="tab-icon">👁</span> Óptica</button>
+      <button class="tab-btn" onclick="filterProjects('Investigación',this)"><span class="tab-icon">🔬</span> Investigación</button>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="projects-grid" id="projectsGrid">
+
+      <div class="proj-card" data-cat="Robótica">
+        <div class="proj-card-img ph-race">🏎️<span class="cat-badge cb-rob">Robótica</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">Robot Racer</div>
+          <p class="proj-card-desc">Robot autónomo de carreras con control PID, seguimiento de línea y telemetría en tiempo real. Optimización de velocidad y estabilidad.</p>
+          <div class="proj-card-actions">
+            <a href="proyecto_detalle.html?id=robot-racer" class="btn-ver">Ver proyecto →</a>
+            <a href="#" class="proj-icon-btn" title="GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="proj-icon-btn" title="Abrir">↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="Electrónica">
+        <div class="proj-card-img ph-circuit">⚡<span class="cat-badge cb-ele">Electrónica</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">Circuitos con Diodos</div>
+          <p class="proj-card-desc">Análisis y diseño de rectificadores, limitadores y multiplicadores de voltaje. Simulación y validación experimental.</p>
+          <div class="proj-card-actions">
+            <a href="proyecto_detalle.html?id=circuitos-diodos" class="btn-ver">Ver proyecto →</a>
+            <a href="#" class="proj-icon-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="proj-icon-btn">↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="Programación">
+        <div class="proj-card-img ph-physics">📊<span class="cat-badge cb-prog">Programación</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">Física Computacional</div>
+          <p class="proj-card-desc">Simulación numérica de sistemas físicos complejos usando Python. Métodos de diferencias finitas y Monte Carlo.</p>
+          <div class="proj-card-actions">
+            <a href="proyecto_detalle.html?id=fisica-computacional" class="btn-ver">Ver proyecto →</a>
+            <a href="#" class="proj-icon-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="proj-icon-btn">↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="Óptica">
+        <div class="proj-card-img ph-optic">🔭<span class="cat-badge" style="background:rgba(0,160,150,.85);color:#fff">Óptica</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">Instrumentación Óptica</div>
+          <p class="proj-card-desc">Alineación y caracterización de un sistema óptico láser. Medición de perfiles de haz y análisis de aberraciones.</p>
+          <div class="proj-card-actions">
+            <a href="proyecto_detalle.html?id=instrumentacion-optica" class="btn-ver">Ver proyecto →</a>
+            <a href="#" class="proj-icon-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="proj-icon-btn">↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="Electrónica">
+        <div class="proj-card-img ph-arduino">🔌<span class="cat-badge cb-ele">Electrónica</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">Arduino + Sensores</div>
+          <p class="proj-card-desc">Adquisición y procesamiento de datos de sensores (temperatura, distancia, luz). Visualización en LCD y comunicación serial.</p>
+          <div class="proj-card-actions">
+            <a href="proyecto_detalle.html?id=arduino-sensores" class="btn-ver">Ver proyecto →</a>
+            <a href="#" class="proj-icon-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="proj-icon-btn">↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="Programación">
+        <div class="proj-card-img ph-cad">🖥️<span class="cat-badge cb-prog">Programación</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">Diseño 3D / CAD</div>
+          <p class="proj-card-desc">Modelado y ensamblaje de piezas mecánicas en SolidWorks. Impresión 3D y prototipado rápido para soluciones físicas.</p>
+          <div class="proj-card-actions">
+            <a href="proyecto_detalle.html?id=diseno-cad" class="btn-ver">Ver proyecto →</a>
+            <a href="#" class="proj-icon-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="proj-icon-btn">↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <!-- FEATURED BANNER -->
+    <div class="featured-banner">
+      <div class="featured-banner-img">🏎️</div>
+      <div>
+        <div class="featured-label">
+          <span class="star-badge">★</span>
+          <span>Proyecto destacado</span>
+          <span class="featured-sep"></span>
+          <span class="featured-cat">Robótica</span>
+        </div>
+        <div class="featured-title">Robot Racer 🏁</div>
+        <p class="featured-desc">Plataforma robótica autónoma diseñada para competencias de seguimiento de línea. Integra control PID, procesamiento de imágenes, telemetría en tiempo real y un chasis impreso en 3D optimizado para velocidad y maniobrabilidad.</p>
+        <div class="featured-chips">
+          <span class="chip-sm">🎯 Control PID — Estabilidad y precisión</span>
+          <span class="chip-sm">📷 Visión por cámara — Seguimiento de línea</span>
+          <span class="chip-sm">📡 Telemetría — Datos en tiempo real</span>
+          <span class="chip-sm">🖨️ Chasis 3D — Ligero y resistente</span>
+        </div>
+        <div class="featured-actions">
+          <a href="proyecto_detalle.html?id=robot-racer" class="btn-pink-solid">Ver proyecto completo →</a>
+          <a href="#" class="btn-ghost-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Código
+          </a>
+          <a href="#" class="btn-ghost-sm">📄 Documentación</a>
+        </div>
+      </div>
+      <div class="featured-meta">
+        <div class="trophy">🏆</div>
+        <div class="feat-info-item"><div class="feat-info-label">Tecnologías</div>C++, OpenCV, Arduino,<br>PID, ROS (básico)</div>
+        <div class="feat-info-item"><div class="feat-info-label">Estado</div>Finalizado</div>
+        <div class="feat-info-item"><div class="feat-info-label">Año</div>2024</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-sig">Antonia I. Morales Gutiérrez ♡</div>
+  <span class="footer-copy">© 2024 Antonia I. Morales Gutiérrez. Todos los derechos reservados.</span>
+  <span class="footer-formula">E = mc²</span>
+</footer>
+
+<script>
+function toggleTheme(){
+  const b=document.body,btn=document.getElementById('themeToggle');
+  const d=b.classList.toggle('dark');
+  btn.textContent=d?'🌙':'☀️';
+  localStorage.setItem('am_theme',d?'dark':'light');
+}
+(function(){
+  const s=localStorage.getItem('am_theme');
+  if(s==='dark'){document.body.classList.add('dark');const b=document.getElementById('themeToggle');if(b)b.textContent='🌙';}
+})();
+
+function filterProjects(cat, btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(c=>{
+    const show = cat==='Todos' || c.dataset.cat===cat;
+    c.style.display = show ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>

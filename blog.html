@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog — Antonia Morales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#e8417a;--pink-light:#f9c0d4;--lavender:#c9a8e8;--lilac:#ddc4f5;--bg:#f7f3fb;--dark:#2b2040;--mid:#6b5b8e;--border:rgba(201,168,232,.25);--card-bg:#ffffff;--input-bg:#f7f3fb;}
+body.dark{--bg:#0f0b1a;--dark:#f0eaf8;--mid:#c4aee0;--border:rgba(201,168,232,.15);--card-bg:#1e1630;--input-bg:#150f24;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;min-height:100vh;transition:background .35s,color .35s}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 5vw;background:rgba(247,243,251,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .35s}
+body.dark nav{background:rgba(15,11,26,.9)}
+.nav-left{display:flex;align-items:center;gap:.9rem}
+.logo-badge{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--lavender);display:flex;align-items:center;justify-content:center;position:relative;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--dark);letter-spacing:-.02em}
+.logo-text span{color:var(--lavender)}
+.logo-star{position:absolute;top:-4px;right:-4px;font-size:.55rem;color:var(--pink)}
+.nav-name-block{display:flex;flex-direction:column;line-height:1.2}
+.nav-fullname{font-size:.82rem;font-weight:600;color:var(--dark)}
+.nav-subtitle{font-size:.7rem;color:var(--pink)}
+nav ul{list-style:none;display:flex;gap:1.8rem}
+nav ul a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--mid);transition:color .2s;position:relative;padding-bottom:3px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav ul a .ni{font-size:.9rem}
+nav ul a:hover{color:var(--dark)}
+nav ul a.active{color:var(--dark);font-weight:600}
+nav ul a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--pink);border-radius:2px}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .2s;flex-shrink:0}
+.theme-toggle:hover{transform:scale(1.1)}
+
+/* BLOG HERO */
+.blog-hero{padding:5.5rem 5vw 2.5rem;display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:center;position:relative;overflow:hidden}
+.blog-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;opacity:.5}
+.bh-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:.4rem}
+.bh-title .solid{color:var(--dark)}
+.bh-title .italic{color:var(--lavender);font-style:italic}
+.bh-underline{width:50px;height:3px;background:var(--pink);border-radius:3px;margin:.8rem 0 1rem}
+.bh-sub{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:.7rem}
+.bh-desc{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75;max-width:400px}
+.bh-deco{position:relative;display:flex;align-items:center;justify-content:center;z-index:1}
+.bh-notebook{font-size:5rem;opacity:.6;animation:floatY 5s ease-in-out infinite}
+.bh-atom{font-size:3rem;opacity:.35;position:absolute;left:0;top:20%;animation:floatY 4s ease-in-out infinite 1s}
+.bh-wave{font-size:1.5rem;opacity:.3;position:absolute;bottom:10%;right:0;letter-spacing:.2em}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* FEATURED */
+.featured-wrap{padding:0 5vw 2rem}
+.featured-post{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:280px 1fr;transition:box-shadow .3s}
+.featured-post:hover{box-shadow:0 12px 40px rgba(100,60,160,.12)}
+.fp-img{height:100%;min-height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#0a0a1a,#2a1050)}
+.fp-body{padding:1.6rem 2rem}
+.fp-meta{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.9rem}
+.fp-star{background:var(--pink);color:#fff;font-size:.7rem;font-weight:600;padding:.22rem .7rem;border-radius:50px;display:inline-flex;align-items:center;gap:.3rem}
+.fp-cat{font-size:.72rem;font-weight:500;padding:.22rem .7rem;border-radius:50px;background:rgba(232,65,122,.1);color:var(--pink)}
+.fp-date{font-size:.75rem;color:var(--mid);display:flex;align-items:center;gap:.3rem}
+.fp-read{font-size:.75rem;color:var(--mid);display:flex;align-items:center;gap:.3rem}
+.fp-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--dark);line-height:1.25;margin-bottom:.7rem}
+.fp-desc{font-size:.87rem;font-weight:300;color:var(--mid);line-height:1.7;margin-bottom:1.2rem;max-width:460px}
+.btn-leer{display:inline-flex;align-items:center;gap:.4rem;background:var(--pink);color:#fff;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;padding:.6rem 1.3rem;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(232,65,122,.3)}
+.btn-leer:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,65,122,.4)}
+
+/* FILTER TABS */
+.filter-wrap{padding:0 5vw 1.5rem}
+.filter-tabs{display:flex;gap:.6rem;flex-wrap:wrap}
+.tab-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Sans',sans-serif;font-size:.79rem;font-weight:500;padding:.42rem .95rem;border-radius:50px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--mid);cursor:pointer;transition:all .2s}
+.tab-btn:hover{border-color:var(--lavender);color:var(--dark)}
+.tab-btn.active{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* MAIN GRID */
+.blog-layout{padding:0 5vw 4rem;display:grid;grid-template-columns:1fr 260px;gap:2.5rem}
+
+/* Blog posts grid */
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;align-content:start}
+.post-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.post-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(100,60,160,.12)}
+.pc-img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.pc-img.i1{background:linear-gradient(135deg,#0d1040,#2a1060)}
+.pc-img.i2{background:linear-gradient(135deg,#1a0800,#4a2000)}
+.pc-img.i3{background:linear-gradient(135deg,#0d1f0d,#1a3a2a)}
+.pc-img.i4{background:linear-gradient(135deg,#001a1a,#003333)}
+.pc-img.i5{background:linear-gradient(135deg,#1a0d2e,#3a1a6e)}
+.pc-img.i6{background:linear-gradient(135deg,#1a1a0d,#3a3a1a)}
+.pc-cat{display:inline-block;font-size:.68rem;font-weight:500;padding:.18rem .55rem;border-radius:50px;margin:-.6rem 0 0 .7rem;position:relative;z-index:1}
+.cat-rob{background:rgba(232,65,122,.15);color:var(--pink)}
+.cat-ele{background:rgba(100,60,200,.15);color:#6450c8}
+.cat-sim{background:rgba(50,150,200,.15);color:#3296c8}
+.cat-ins{background:rgba(0,160,100,.15);color:#009660}
+.cat-apr{background:rgba(200,100,50,.15);color:#c86432}
+.cat-lid{background:rgba(150,50,200,.15);color:#963cc8}
+.pc-body{padding:1rem 1.1rem 1.2rem;flex:1;display:flex;flex-direction:column}
+.pc-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:.5rem}
+.pc-desc{font-size:.79rem;font-weight:300;color:var(--mid);line-height:1.65;flex:1}
+.pc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.9rem;font-size:.73rem;color:#aaa}
+.pc-read{color:var(--pink);font-weight:500;text-decoration:none;display:flex;align-items:center;gap:.2rem}
+.pc-read:hover{text-decoration:underline}
+
+.load-more-wrap{grid-column:1/-1;text-align:center;padding-top:.5rem}
+.btn-load{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid var(--border);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;padding:.6rem 1.5rem;border-radius:50px;cursor:pointer;transition:all .2s}
+.btn-load:hover{border-color:var(--lavender);color:var(--dark)}
+
+/* RIGHT SIDEBAR */
+.blog-sidebar{}
+.bs-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:1.2rem;margin-bottom:1.2rem}
+.bs-title{font-size:.8rem;font-weight:600;color:var(--dark);margin-bottom:.9rem;display:flex;align-items:center;gap:.4rem}
+.bs-title .dot{color:var(--pink);font-size:.6em}
+.topic-row{display:flex;align-items:center;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);font-size:.82rem}
+.topic-row:last-child{border-bottom:none;padding-bottom:0}
+.topic-left{display:flex;align-items:center;gap:.5rem;color:var(--mid)}
+.topic-count{font-size:.72rem;font-weight:600;color:var(--mid);background:var(--input-bg);border:1px solid var(--border);border-radius:50px;padding:.1rem .5rem}
+.all-topics{font-size:.78rem;color:var(--pink);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem}
+.all-topics:hover{text-decoration:underline}
+.exploring-item{display:flex;align-items:center;gap:.6rem;padding:.4rem 0;font-size:.8rem;color:var(--mid)}
+.exploring-item .ei{font-size:.85rem}
+.progress-row{margin-top:.8rem}
+.pr-label{font-size:.75rem;color:var(--mid);margin-bottom:.4rem;display:flex;justify-content:space-between}
+.pr-bar{height:6px;background:var(--input-bg);border-radius:3px;overflow:hidden}
+.pr-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--lavender));border-radius:3px;width:60%}
+.bs-quote{padding:.8rem 1rem;border-left:3px solid var(--lavender);background:transparent;margin-top:.5rem}
+.bs-quote .bq-mark{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--lavender);line-height:.8;display:block;margin-bottom:.3rem}
+.bs-quote p{font-size:.82rem;font-style:italic;color:var(--mid);line-height:1.6}
+
+/* footer */
+footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-sig{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--mid);display:flex;align-items:center;gap:.4rem}
+.footer-formula{font-size:.9rem;color:var(--mid);letter-spacing:.06em;opacity:.6}
+.footer-copy{font-size:.75rem;color:#aaa}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.hmtl" class="logo-badge">
+      <span class="logo-text">A<span>M</span></span>
+      <span class="logo-star">✦</span>
+    </a>
+    <div class="nav-name-block">
+      <span class="nav-fullname">Antonia I. Morales Gutiérrez</span>
+      <span class="nav-subtitle">Ingeniería en Física</span>
+    </div>
+  </div>
+  <ul>
+    <li><a href="index.hmtl"><span class="ni"></span>Inicio</a></li>
+    <li><a href="proyectos.html"><span class="ni"></span>Proyectos</a></li>
+    <li><a href="sobre-mi.html"><span class="ni"></span>Sobre mí</a></li>
+    <li><a href="blog.html" class="active"><span class="ni"></span>Blog</a></li>
+    <li><a href="contacto.html"><span class="ni"></span>Contacto</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️</button>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div>
+    <div class="bh-title">
+      <div class="solid">Bitácora</div>
+      <div class="italic">de ideas</div>
+    </div>
+    <div class="bh-underline"></div>
+    <p class="bh-sub">Aprendizajes, experimentos y procesos detrás de mis proyectos.</p>
+    <p class="bh-desc">Aquí documento mis ideas, prototipos y hallazgos en física aplicada, electrónica, programación y robótica. Es mi espacio para analizar, compartir y conectar la teoría con el mundo real.</p>
+  </div>
+  <div class="bh-deco">
+    <div class="bh-notebook">📓</div>
+    <div class="bh-atom">⚛️</div>
+    <div class="bh-wave">〜〜〜</div>
+  </div>
+</div>
+
+<!-- FEATURED POST -->
+<div class="featured-wrap">
+  <a href="entrada_blog.html?id=robot-racer" style="text-decoration:none;color:inherit;display:block">
+  <div class="featured-post">
+    <div class="fp-img">🏎️</div>
+    <div class="fp-body">
+      <div class="fp-meta">
+        <span class="fp-star">★ Destacada</span>
+        <span class="fp-cat">Robótica</span>
+        <span class="fp-date">📅 12 may 2024</span>
+        <span class="fp-read">⏱ 8 min de lectura</span>
+      </div>
+      <div class="fp-title">Cómo estoy construyendo mi Robot Racer</div>
+      <p class="fp-desc">Documentación completa del diseño, selección de sensores, control y las iteraciones que me acercan a un robot seguidor de línea más preciso y confiable.</p>
+      <span class="btn-leer">Leer entrada →</span>
+    </div>
+  </div>
+  </a>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-wrap">
+  <div class="filter-tabs">
+    <button class="tab-btn active" onclick="filterPosts('Todos',this)">⊞ Todos</button>
+    <button class="tab-btn" onclick="filterPosts('Robótica',this)">🤖 Robótica</button>
+    <button class="tab-btn" onclick="filterPosts('Electrónica aplicada',this)">&lt;/&gt; Electrónica aplicada</button>
+    <button class="tab-btn" onclick="filterPosts('Simulación física',this)">〜 Simulación física</button>
+    <button class="tab-btn" onclick="filterPosts('Instrumentación',this)">👁 Instrumentación</button>
+    <button class="tab-btn" onclick="filterPosts('Aprendizajes',this)">💡 Aprendizajes</button>
+    <button class="tab-btn" onclick="filterPosts('Liderazgo STEM',this)">👥 Liderazgo STEM</button>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="blog-layout">
+  <div>
+    <div class="posts-grid" id="postsGrid">
+
+      <a href="entrada_blog.html?id=arduino-esp32" class="post-card" data-cat="Electrónica aplicada">
+        <div class="pc-img i1">🔌</div>
+        <span class="pc-cat cat-ele">Electrónica aplicada</span>
+        <div class="pc-body">
+          <div class="pc-title">Arduino Nano vs ESP32 para robótica</div>
+          <p class="pc-desc">Comparo especificaciones, ventajas y casos de uso para elegir la mejor opción en mis proyectos.</p>
+          <div class="pc-footer">
+            <span>⏱ 6 min de lectura</span>
+            <a href="entrada_blog.html?id=arduino-esp32" class="pc-read">Leer más →</a>
+          </div>
+        </div>
+      </a>
+
+      <a href="entrada_blog.html?id=diodos-ltspice" class="post-card" data-cat="Electrónica aplicada">
+        <div class="pc-img i2">⚡</div>
+        <span class="pc-cat cat-ele">Electrónica aplicada</span>
+        <div class="pc-body">
+          <div class="pc-title">Qué aprendí simulando circuitos con diodos</div>
+          <p class="pc-desc">De rectificadores a limitadores: ideas clave y aprendizajes al simular en LTspice y Proteus.</p>
+          <div class="pc-footer">
+            <span>⏱ 5 min de lectura</span>
+            <a href="entrada_blog.html?id=diodos-ltspice" class="pc-read">Leer más →</a>
+          </div>
+        </div>
+      </a>
+
+      <a href="entrada_blog.html?id=metodos-numericos" class="post-card" data-cat="Simulación física">
+        <div class="pc-img i3">📊</div>
+        <span class="pc-cat cat-sim">Simulación física</span>
+        <div class="pc-body">
+          <div class="pc-title">Por qué los métodos numéricos pueden perder energía</div>
+          <p class="pc-desc">Una mirada a la conservación de la energía en integradores numéricos y cómo reducir el error.</p>
+          <div class="pc-footer">
+            <span>⏱ 7 min de lectura</span>
+            <a href="entrada_blog.html?id=metodos-numericos" class="pc-read">Leer más →</a>
+          </div>
+        </div>
+      </a>
+
+      <a href="entrada_blog.html?id=instrumentacion-optica" class="post-card" data-cat="Instrumentación">
+        <div class="pc-img i4">🔭</div>
+        <span class="pc-cat cat-ins">Instrumentación</span>
+        <div class="pc-body">
+          <div class="pc-title">Qué es la instrumentación óptica</div>
+          <p class="pc-desc">Conceptos básicos, componentes y aplicaciones en experimentos de física y sistemas de medición.</p>
+          <div class="pc-footer">
+            <span>⏱ 6 min de lectura</span>
+            <a href="entrada_blog.html?id=instrumentacion-optica" class="pc-read">Leer más →</a>
+          </div>
+        </div>
+      </a>
+
+      <a href="entrada_blog.html?id=organizar-ideas" class="post-card" data-cat="Aprendizajes">
+        <div class="pc-img i5">📔</div>
+        <span class="pc-cat cat-apr">Aprendizajes</span>
+        <div class="pc-body">
+          <div class="pc-title">Cómo organizo mis ideas antes de prototipar</div>
+          <p class="pc-desc">Mi flujo de trabajo: desde la lluvia de ideas hasta el plan, el diseño y las pruebas.</p>
+          <div class="pc-footer">
+            <span>⏱ 4 min de lectura</span>
+            <a href="entrada_blog.html?id=organizar-ideas" class="pc-read">Leer más →</a>
+          </div>
+        </div>
+      </a>
+
+      <a href="entrada_blog.html?id=aprender-ingenieria" class="post-card" data-cat="Liderazgo STEM">
+        <div class="pc-img i6">🤖</div>
+        <span class="pc-cat cat-lid">Liderazgo STEM</span>
+        <div class="pc-body">
+          <div class="pc-title">Aprender haciendo en ingeniería</div>
+          <p class="pc-desc">Reflexiones sobre el aprendizaje activo, la curiosidad y la confianza para afrontar problemas reales.</p>
+          <div class="pc-footer">
+            <span>⏱ 5 min de lectura</span>
+            <a href="entrada_blog.html?id=aprender-ingenieria" class="pc-read">Leer más →</a>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /posts-grid -->
+
+    <div class="load-more-wrap">
+      <button class="btn-load">Cargar más entradas ↓</button>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="blog-sidebar">
+    <div class="bs-card">
+      <div class="bs-title">Temas <span class="dot">◆</span></div>
+      <div class="topic-row"><span class="topic-left">🤖 Robótica</span><span class="topic-count">14</span></div>
+      <div class="topic-row"><span class="topic-left">&lt;/&gt; Electrónica aplicada</span><span class="topic-count">12</span></div>
+      <div class="topic-row"><span class="topic-left">〜 Simulación física</span><span class="topic-count">9</span></div>
+      <div class="topic-row"><span class="topic-left">👁 Instrumentación</span><span class="topic-count">7</span></div>
+      <div class="topic-row"><span class="topic-left">💡 Aprendizajes</span><span class="topic-count">11</span></div>
+      <div class="topic-row"><span class="topic-left">👥 Liderazgo STEM</span><span class="topic-count">6</span></div>
+      <a href="#" class="all-topics">Ver todos los temas →</a>
+    </div>
+
+    <div class="bs-card">
+      <div class="bs-title">Actualmente explorando <span class="dot">◆</span></div>
+      <div class="exploring-item"><span class="ei">🎯</span> Control PID y sistemas dinámicos</div>
+      <div class="exploring-item"><span class="ei">〜</span> Filtros activos y señales</div>
+      <div class="exploring-item"><span class="ei">📷</span> Visión por computadora</div>
+      <div class="exploring-item"><span class="ei">🔬</span> Nuevos sensores para mi Robot Racer</div>
+      <div class="progress-row">
+        <div class="pr-label"><span>Progreso general</span><span>60%</span></div>
+        <div class="pr-bar"><div class="pr-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="bs-card">
+      <div class="bs-quote">
+        <span class="bq-mark">"</span>
+        <p>Escribo para entender, pruebo para mejorar y construyo para aprender.</p>
+      </div>
+      <div style="text-align:center;margin-top:.8rem;font-size:1.4rem;opacity:.3">⚛️</div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-sig">Antonia I. Morales Gutiérrez ♡</div>
+  <span class="footer-copy">© 2024 Antonia I. Morales Gutiérrez. Todos los derechos reservados.</span>
+  <span class="footer-formula">E = mc²</span>
+</footer>
+
+<script>
+function toggleTheme(){
+  const b=document.body,btn=document.getElementById('themeToggle');
+  const d=b.classList.toggle('dark');
+  btn.textContent=d?'🌙':'☀️';
+  localStorage.setItem('am_theme',d?'dark':'light');
+}
+(function(){
+  const s=localStorage.getItem('am_theme');
+  if(s==='dark'){document.body.classList.add('dark');const b=document.getElementById('themeToggle');if(b)b.textContent='🌙';}
+})();
+
+function filterPosts(cat, btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.querySelectorAll('.post-card').forEach(c=>{
+    const show = cat==='Todos' || c.dataset.cat===cat;
+    c.style.display = show ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>
