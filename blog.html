@@ -375,7 +375,7 @@ function renderPosts(){
   const visiblePosts = posts.slice(0, visibleCount);
 
   if(!visiblePosts.length){
-    grid.innerHTML = `<div class="empty-state"><strong>No hay entradas en esta categoría.</strong><br>Agrega una entrada en <code>data/blog.json</code> o elige otro filtro.</div>`;
+    grid.innerHTML = `<div class="empty-state"><strong>No hay más entradas en esta categoría.</div>`;
   }else{
     grid.innerHTML = visiblePosts.map((post, index) => {
       const style = categoryStyles[post.category] || { className: 'cat-apr' };

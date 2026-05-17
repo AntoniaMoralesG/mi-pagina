@@ -1439,7 +1439,7 @@
 
       const destacados = posts
         .filter(function (post) {
-          return post.destacado === true;
+          return post.featured === true;
         })
         .slice(0, 3);
 
@@ -1449,8 +1449,8 @@
           const color = index === 0 ? "purple" : index === 1 ? "pink" : "blue";
 
           return `
-            <a href="${post.enlace}" class="${clase}">
-              <div class="blog-card-banner ${color}">${post.icono}</div>
+            <a href="${post.link}" class="${clase}">
+              <div class="blog-card-banner ${color}">${post.emoji}</div>
               <div class="blog-card-body">
                 <span class="blog-tag">${post.categoria}</span>
                 <h3 class="blog-card-title">${post.titulo}</h3>

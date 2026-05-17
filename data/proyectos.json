@@ -14,8 +14,8 @@
     "descripcion": "Diseño y construcción de un robot velocista para seguimiento de línea, integrando sensores, control, electrónica y programación embebida.",
     "categoria": "Robótica",
     "icono": "🏎️",
-    "enlace": "proyectos/robot-racer.html",
-    "visible": false,
+    "enlace": "Proyectos/robot_racer.html",
+    "destacado": true,
     "fecha": "2026",
     "tecnologias": ["Arduino Nano", "Sensores IR", "Control", "Electrónica"]
   },
