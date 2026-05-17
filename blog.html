@@ -20,7 +20,7 @@ body.dark nav{background:rgba(15,11,26,.9)}
 .logo-text span{color:var(--lavender)}
 .logo-star{position:absolute;top:-4px;right:-4px;font-size:.55rem;color:var(--pink)}
 .nav-name-block{display:flex;flex-direction:column;line-height:1.2}
-.nav-fullname{font-size:.82rem;font-weight:600;color:var(--dark)}
+.nav-fullname{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);letter-spacing:-.02em}
 .nav-subtitle{font-size:.7rem;color:var(--pink)}
 nav ul{list-style:none;display:flex;gap:1.8rem}
 nav ul a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--mid);transition:color .2s;position:relative;padding-bottom:3px;display:flex;flex-direction:column;align-items:center;gap:2px}
@@ -76,20 +76,24 @@ nav ul a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;h
 .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;align-content:start}
 .post-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
 .post-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(100,60,160,.12)}
-.pc-img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
-.pc-img.i1{background:linear-gradient(135deg,#0d1040,#2a1060)}
-.pc-img.i2{background:linear-gradient(135deg,#1a0800,#4a2000)}
-.pc-img.i3{background:linear-gradient(135deg,#0d1f0d,#1a3a2a)}
-.pc-img.i4{background:linear-gradient(135deg,#001a1a,#003333)}
-.pc-img.i5{background:linear-gradient(135deg,#1a0d2e,#3a1a6e)}
-.pc-img.i6{background:linear-gradient(135deg,#1a1a0d,#3a3a1a)}
-.pc-cat{display:inline-block;font-size:.68rem;font-weight:500;padding:.18rem .55rem;border-radius:50px;margin:-.6rem 0 0 .7rem;position:relative;z-index:1}
-.cat-rob{background:rgba(232,65,122,.15);color:var(--pink)}
-.cat-ele{background:rgba(100,60,200,.15);color:#6450c8}
-.cat-sim{background:rgba(50,150,200,.15);color:#3296c8}
-.cat-ins{background:rgba(0,160,100,.15);color:#009660}
-.cat-apr{background:rgba(200,100,50,.15);color:#c86432}
-.cat-lid{background:rgba(150,50,200,.15);color:#963cc8}
+.pc-img{width:100%;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:2.5rem;position:relative;padding:2rem 1.4rem;overflow:hidden}
+.pc-img.i1{background:linear-gradient(135deg,#130b3f,#3b1673 55%,#6f3aa2)}
+.pc-img.i2{background:linear-gradient(135deg,#2b0a2d,#6f1d5b 55%,#b85fa1)}
+.pc-img.i3{background:linear-gradient(135deg,#1c103f,#56328b 55%,#c9a8e8)}
+.pc-img.i4{background:linear-gradient(135deg,#210b33,#7a2b7d 55%,#e8417a)}
+.pc-img.i5{background:linear-gradient(135deg,#2a1747,#8e4cae 55%,#f4b6d2)}
+.pc-img.i6{background:linear-gradient(135deg,#160c2e,#5d2b73 55%,#ddc4f5)}
+.pc-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 52%,rgba(255,255,255,.18),transparent 32%),linear-gradient(180deg,rgba(255,255,255,.03),rgba(15,11,26,.1));pointer-events:none}
+.pc-emoji{display:block;font-size:4.8rem;line-height:1;position:relative;z-index:2;transform:translateY(-1.6rem);filter:drop-shadow(0 14px 22px rgba(0,0,0,.25))}
+.pc-cat{display:inline-flex;align-items:center;justify-content:center;width:auto;max-width:max-content;font-size:.82rem;font-weight:800;padding:.5rem 1.45rem;border-radius:999px;margin:0;position:absolute;left:50%;bottom:1.45rem;transform:translateX(-50%);z-index:3;white-space:nowrap;letter-spacing:-.01em;box-shadow:0 12px 28px rgba(35,20,65,.24),inset 0 1px 0 rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.34)}
+.cat-web{background:linear-gradient(135deg,#fff6fb,#f7bfd9);color:#7b3a79}
+.cat-rob{background:linear-gradient(135deg,#e8417a,#c77bd2);color:#fff}
+.cat-ele{background:linear-gradient(135deg,#f8e7ff,#c9a8e8);color:#5e377d}
+.cat-sim{background:linear-gradient(135deg,#fff,#e7d3fb);color:#604080}
+.cat-fis{background:linear-gradient(135deg,#f9c0d4,#ffffff);color:#7a3d66}
+.cat-ins{background:linear-gradient(135deg,#ddc4f5,#ffffff);color:#604080}
+.cat-apr{background:linear-gradient(135deg,#ffeaf4,#e8417a);color:#fff}
+.cat-lid{background:linear-gradient(135deg,#c9a8e8,#e8417a);color:#fff}
 .pc-body{padding:1rem 1.1rem 1.2rem;flex:1;display:flex;flex-direction:column}
 .pc-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:.5rem}
 .pc-desc{font-size:.79rem;font-weight:300;color:var(--mid);line-height:1.65;flex:1}
@@ -122,6 +126,16 @@ nav ul a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;h
 .bs-quote .bq-mark{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--lavender);line-height:.8;display:block;margin-bottom:.3rem}
 .bs-quote p{font-size:.82rem;font-style:italic;color:var(--mid);line-height:1.6}
 
+
+/* DYNAMIC BLOG STATES */
+.empty-state{grid-column:1/-1;background:var(--card-bg);border:1px dashed var(--border);border-radius:18px;padding:2rem;text-align:center;color:var(--mid);line-height:1.7}
+.empty-state strong{color:var(--dark)}
+.pc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
+.pc-img.has-image::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,11,26,.15),rgba(15,11,26,.35));z-index:2}
+.fp-img{overflow:hidden}
+.fp-img img{width:100%;height:100%;object-fit:cover;display:block}
+.featured-placeholder{font-size:.78rem;color:var(--mid);padding:.7rem 1rem;border:1px solid var(--border);border-radius:999px;background:var(--input-bg);display:inline-flex;align-items:center;gap:.4rem}
+
 /* footer */
 footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .footer-sig{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--mid);display:flex;align-items:center;gap:.4rem}
@@ -133,17 +147,16 @@ footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2r
 
 <nav>
   <div class="nav-left">
-    <a href="index.hmtl" class="logo-badge">
+    <a href="index.html" class="logo-badge">
       <span class="logo-text">A<span>M</span></span>
       <span class="logo-star">✦</span>
     </a>
     <div class="nav-name-block">
       <span class="nav-fullname">Antonia I. Morales Gutiérrez</span>
-      <span class="nav-subtitle">Ingeniería en Física</span>
     </div>
   </div>
   <ul>
-    <li><a href="index.hmtl"><span class="ni"></span>Inicio</a></li>
+    <li><a href="index.html"><span class="ni"></span>Inicio</a></li>
     <li><a href="proyectos.html"><span class="ni"></span>Proyectos</a></li>
     <li><a href="sobre-mi.html"><span class="ni"></span>Sobre mí</a></li>
     <li><a href="blog.html" class="active"><span class="ni"></span>Blog</a></li>
@@ -171,125 +184,32 @@ footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2r
 </div>
 
 <!-- FEATURED POST -->
-<div class="featured-wrap">
-  <a href="entrada_blog.html?id=robot-racer" style="text-decoration:none;color:inherit;display:block">
-  <div class="featured-post">
-    <div class="fp-img">🏎️</div>
-    <div class="fp-body">
-      <div class="fp-meta">
-        <span class="fp-star">★ Destacada</span>
-        <span class="fp-cat">Robótica</span>
-        <span class="fp-date">📅 12 may 2024</span>
-        <span class="fp-read">⏱ 8 min de lectura</span>
-      </div>
-      <div class="fp-title">Cómo estoy construyendo mi Robot Racer</div>
-      <p class="fp-desc">Documentación completa del diseño, selección de sensores, control y las iteraciones que me acercan a un robot seguidor de línea más preciso y confiable.</p>
-      <span class="btn-leer">Leer entrada →</span>
-    </div>
+<div class="featured-wrap" id="featuredWrap">
+  <div class="empty-state">
+    <strong>Cargando entrada destacada...</strong><br>
+    Si no aparece, revisa que exista el archivo <code>data/blog.json</code>.
   </div>
-  </a>
 </div>
 
 <!-- FILTER TABS -->
 <div class="filter-wrap">
-  <div class="filter-tabs">
+  <div class="filter-tabs" id="filterTabs">
     <button class="tab-btn active" onclick="filterPosts('Todos',this)">⊞ Todos</button>
-    <button class="tab-btn" onclick="filterPosts('Robótica',this)">🤖 Robótica</button>
-    <button class="tab-btn" onclick="filterPosts('Electrónica aplicada',this)">&lt;/&gt; Electrónica aplicada</button>
-    <button class="tab-btn" onclick="filterPosts('Simulación física',this)">〜 Simulación física</button>
-    <button class="tab-btn" onclick="filterPosts('Instrumentación',this)">👁 Instrumentación</button>
-    <button class="tab-btn" onclick="filterPosts('Aprendizajes',this)">💡 Aprendizajes</button>
-    <button class="tab-btn" onclick="filterPosts('Liderazgo STEM',this)">👥 Liderazgo STEM</button>
-  </div>
+
 </div>
 
 <!-- MAIN LAYOUT -->
 <div class="blog-layout">
   <div>
     <div class="posts-grid" id="postsGrid">
-
-      <a href="entrada_blog.html?id=arduino-esp32" class="post-card" data-cat="Electrónica aplicada">
-        <div class="pc-img i1">🔌</div>
-        <span class="pc-cat cat-ele">Electrónica aplicada</span>
-        <div class="pc-body">
-          <div class="pc-title">Arduino Nano vs ESP32 para robótica</div>
-          <p class="pc-desc">Comparo especificaciones, ventajas y casos de uso para elegir la mejor opción en mis proyectos.</p>
-          <div class="pc-footer">
-            <span>⏱ 6 min de lectura</span>
-            <a href="entrada_blog.html?id=arduino-esp32" class="pc-read">Leer más →</a>
-          </div>
-        </div>
-      </a>
-
-      <a href="entrada_blog.html?id=diodos-ltspice" class="post-card" data-cat="Electrónica aplicada">
-        <div class="pc-img i2">⚡</div>
-        <span class="pc-cat cat-ele">Electrónica aplicada</span>
-        <div class="pc-body">
-          <div class="pc-title">Qué aprendí simulando circuitos con diodos</div>
-          <p class="pc-desc">De rectificadores a limitadores: ideas clave y aprendizajes al simular en LTspice y Proteus.</p>
-          <div class="pc-footer">
-            <span>⏱ 5 min de lectura</span>
-            <a href="entrada_blog.html?id=diodos-ltspice" class="pc-read">Leer más →</a>
-          </div>
-        </div>
-      </a>
-
-      <a href="entrada_blog.html?id=metodos-numericos" class="post-card" data-cat="Simulación física">
-        <div class="pc-img i3">📊</div>
-        <span class="pc-cat cat-sim">Simulación física</span>
-        <div class="pc-body">
-          <div class="pc-title">Por qué los métodos numéricos pueden perder energía</div>
-          <p class="pc-desc">Una mirada a la conservación de la energía en integradores numéricos y cómo reducir el error.</p>
-          <div class="pc-footer">
-            <span>⏱ 7 min de lectura</span>
-            <a href="entrada_blog.html?id=metodos-numericos" class="pc-read">Leer más →</a>
-          </div>
-        </div>
-      </a>
-
-      <a href="entrada_blog.html?id=instrumentacion-optica" class="post-card" data-cat="Instrumentación">
-        <div class="pc-img i4">🔭</div>
-        <span class="pc-cat cat-ins">Instrumentación</span>
-        <div class="pc-body">
-          <div class="pc-title">Qué es la instrumentación óptica</div>
-          <p class="pc-desc">Conceptos básicos, componentes y aplicaciones en experimentos de física y sistemas de medición.</p>
-          <div class="pc-footer">
-            <span>⏱ 6 min de lectura</span>
-            <a href="entrada_blog.html?id=instrumentacion-optica" class="pc-read">Leer más →</a>
-          </div>
-        </div>
-      </a>
-
-      <a href="entrada_blog.html?id=organizar-ideas" class="post-card" data-cat="Aprendizajes">
-        <div class="pc-img i5">📔</div>
-        <span class="pc-cat cat-apr">Aprendizajes</span>
-        <div class="pc-body">
-          <div class="pc-title">Cómo organizo mis ideas antes de prototipar</div>
-          <p class="pc-desc">Mi flujo de trabajo: desde la lluvia de ideas hasta el plan, el diseño y las pruebas.</p>
-          <div class="pc-footer">
-            <span>⏱ 4 min de lectura</span>
-            <a href="entrada_blog.html?id=organizar-ideas" class="pc-read">Leer más →</a>
-          </div>
-        </div>
-      </a>
-
-      <a href="entrada_blog.html?id=aprender-ingenieria" class="post-card" data-cat="Liderazgo STEM">
-        <div class="pc-img i6">🤖</div>
-        <span class="pc-cat cat-lid">Liderazgo STEM</span>
-        <div class="pc-body">
-          <div class="pc-title">Aprender haciendo en ingeniería</div>
-          <p class="pc-desc">Reflexiones sobre el aprendizaje activo, la curiosidad y la confianza para afrontar problemas reales.</p>
-          <div class="pc-footer">
-            <span>⏱ 5 min de lectura</span>
-            <a href="entrada_blog.html?id=aprender-ingenieria" class="pc-read">Leer más →</a>
-          </div>
-        </div>
-      </a>
-
+      <div class="empty-state">
+        <strong>Cargando entradas...</strong><br>
+        Las tarjetas se construirán automáticamente desde <code>data/blog.json</code>.
+      </div>
     </div><!-- /posts-grid -->
 
     <div class="load-more-wrap">
-      <button class="btn-load">Cargar más entradas ↓</button>
+      <button class="btn-load" id="loadMoreBtn" onclick="loadMorePosts()">Cargar más entradas ↓</button>
     </div>
   </div>
 
@@ -297,15 +217,11 @@ footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2r
   <aside class="blog-sidebar">
     <div class="bs-card">
       <div class="bs-title">Temas <span class="dot">◆</span></div>
-      <div class="topic-row"><span class="topic-left">🤖 Robótica</span><span class="topic-count">14</span></div>
-      <div class="topic-row"><span class="topic-left">&lt;/&gt; Electrónica aplicada</span><span class="topic-count">12</span></div>
-      <div class="topic-row"><span class="topic-left">〜 Simulación física</span><span class="topic-count">9</span></div>
-      <div class="topic-row"><span class="topic-left">👁 Instrumentación</span><span class="topic-count">7</span></div>
-      <div class="topic-row"><span class="topic-left">💡 Aprendizajes</span><span class="topic-count">11</span></div>
-      <div class="topic-row"><span class="topic-left">👥 Liderazgo STEM</span><span class="topic-count">6</span></div>
-      <a href="#" class="all-topics">Ver todos los temas →</a>
+      <div id="topicList">
+        <div class="topic-row"><span class="topic-left">Cargando temas...</span><span class="topic-count">0</span></div>
+      </div>
     </div>
-
+    
     <div class="bs-card">
       <div class="bs-title">Actualmente explorando <span class="dot">◆</span></div>
       <div class="exploring-item"><span class="ei">🎯</span> Control PID y sistemas dinámicos</div>
@@ -326,34 +242,197 @@ footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2r
       <div style="text-align:center;margin-top:.8rem;font-size:1.4rem;opacity:.3">⚛️</div>
     </div>
   </aside>
-</div>
+</div>  
 
-<footer>
-  <div class="footer-sig">Antonia I. Morales Gutiérrez ♡</div>
-  <span class="footer-copy">© 2024 Antonia I. Morales Gutiérrez. Todos los derechos reservados.</span>
-  <span class="footer-formula">E = mc²</span>
-</footer>
+  <footer>
+   <div class="footer-sig">Antonia I. Morales Gutiérrez ♡</div>
+    <span class="footer-copy">© 2026 Antonia I. Morales Gutiérrez. Todos los derechos reservados.</span>
+    <span class="footer-formula">E = mc²</span>
+  </footer>
 
 <script>
+const BLOG_DATA_URL = 'data/blog.json';
+let allPosts = [];
+let currentCategory = 'Todos';
+let visibleCount = 6;
+
+const categoryStyles = {
+  'Desarrollo web': { icon: '◆', className: 'cat-web' },
+  'Física aplicada': { icon: '◆', className: 'cat-fis' },
+  'Programación': { icon: '◆', className: 'cat-web' },
+  'Robótica': { icon: '🤖', className: 'cat-rob' },
+  'Electrónica aplicada': { icon: '</>', className: 'cat-ele' },
+  'Simulación física': { icon: '〜', className: 'cat-sim' },
+  'Instrumentación': { icon: '👁', className: 'cat-ins' },
+  'Aprendizajes': { icon: '💡', className: 'cat-apr' },
+  'Liderazgo STEM': { icon: '👥', className: 'cat-lid' }
+};
+
 function toggleTheme(){
   const b=document.body,btn=document.getElementById('themeToggle');
   const d=b.classList.toggle('dark');
   btn.textContent=d?'🌙':'☀️';
   localStorage.setItem('am_theme',d?'dark':'light');
 }
+
 (function(){
   const s=localStorage.getItem('am_theme');
-  if(s==='dark'){document.body.classList.add('dark');const b=document.getElementById('themeToggle');if(b)b.textContent='🌙';}
+  if(s==='dark'){
+    document.body.classList.add('dark');
+    const b=document.getElementById('themeToggle');
+    if(b)b.textContent='🌙';
+  }
 })();
 
+function normalizePosts(data){
+  const posts = Array.isArray(data) ? data : (data.posts || data.blog || []);
+  return posts
+    .filter(post => post && post.visible !== false)
+    .map((post, index) => ({
+      id: post.id || `entrada-${index + 1}`,
+      title: post.title || post.titulo || 'Entrada sin título',
+      description: post.description || post.descripcion || post.resumen || '',
+      category: post.category || post.categoria || 'Aprendizajes',
+      date: post.date || post.fecha || '',
+      readTime: post.readTime || post.tiempoLectura || post.lectura || '4 min de lectura',
+      emoji: post.emoji || post.icon || '📓',
+      image: post.image || post.imagen || '',
+      featured: Boolean(post.featured || post.destacada),
+      link: post.link || `entrada_blog.html?id=${post.id || `entrada-${index + 1}`}`
+    }));
+}
+
+function escapeHTML(text){
+  return String(text)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#039;');
+}
+
+function mediaHTML(post, featured=false){
+  if(post.image){
+    return `<img src="${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}">`;
+  }
+  return `<span class="pc-emoji">${escapeHTML(post.emoji)}</span>`;
+}
+
+function renderFeatured(){
+  const wrap = document.getElementById('featuredWrap');
+  const post = allPosts.find(p => p.featured) || allPosts[0];
+  if(!post){
+    wrap.innerHTML = `<div class="empty-state"><strong>Aún no hay entradas publicadas.</strong><br>Agrega tus primeras entradas en <code>data/blog.json</code>.</div>`;
+    return;
+  }
+  wrap.innerHTML = `
+    <a href="${escapeHTML(post.link)}" style="text-decoration:none;color:inherit;display:block">
+      <div class="featured-post">
+        <div class="fp-img">${mediaHTML(post, true)}</div>
+        <div class="fp-body">
+          <div class="fp-meta">
+            <span class="fp-star">★ Destacada</span>
+            <span class="fp-cat">${escapeHTML(post.category)}</span>
+            ${post.date ? `<span class="fp-date">📅 ${escapeHTML(post.date)}</span>` : ''}
+            <span class="fp-read">⏱ ${escapeHTML(post.readTime)}</span>
+          </div>
+          <div class="fp-title">${escapeHTML(post.title)}</div>
+          <p class="fp-desc">${escapeHTML(post.description)}</p>
+          <span class="btn-leer">Leer entrada →</span>
+        </div>
+      </div>
+    </a>`;
+}
+
+function renderFilters(){
+  const tabs = document.getElementById('filterTabs');
+  const categories = [...new Set(allPosts.map(p => p.category))];
+  tabs.innerHTML = `<button class="tab-btn active" onclick="filterPosts('Todos',this)">⊞ Todos</button>` +
+    categories.map(cat => {
+      const style = categoryStyles[cat] || { icon: '◆' };
+      return `<button class="tab-btn" onclick="filterPosts('${escapeHTML(cat)}',this)">${style.icon} ${escapeHTML(cat)}</button>`;
+    }).join('');
+}
+
+function renderTopics(){
+  const list = document.getElementById('topicList');
+  const counts = allPosts.reduce((acc, post) => {
+    acc[post.category] = (acc[post.category] || 0) + 1;
+    return acc;
+  }, {});
+  const rows = Object.entries(counts).map(([cat, count]) => {
+    const style = categoryStyles[cat] || { icon: '◆' };
+    return `<div class="topic-row"><span class="topic-left">${style.icon} ${escapeHTML(cat)}</span><span class="topic-count">${count}</span></div>`;
+  }).join('');
+  list.innerHTML = rows || `<div class="topic-row"><span class="topic-left">Sin temas todavía</span><span class="topic-count">0</span></div>`;
+}
+
+function renderPosts(){
+  const grid = document.getElementById('postsGrid');
+  const posts = allPosts
+    .filter(post => currentCategory === 'Todos' || post.category === currentCategory)
+    .filter(post => !post.featured);
+  const visiblePosts = posts.slice(0, visibleCount);
+
+  if(!visiblePosts.length){
+    grid.innerHTML = `<div class="empty-state"><strong>No hay entradas en esta categoría.</strong><br>Agrega una entrada en <code>data/blog.json</code> o elige otro filtro.</div>`;
+  }else{
+    grid.innerHTML = visiblePosts.map((post, index) => {
+      const style = categoryStyles[post.category] || { className: 'cat-apr' };
+      const imgClass = `i${(index % 6) + 1}`;
+      return `
+        <a href="${escapeHTML(post.link)}" class="post-card" data-cat="${escapeHTML(post.category)}">
+          <div class="pc-img ${imgClass}${post.image ? ' has-image' : ''}">
+            ${mediaHTML(post)}
+            <span class="pc-cat ${style.className}">${escapeHTML(post.category)}</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-title">${escapeHTML(post.title)}</div>
+            <p class="pc-desc">${escapeHTML(post.description)}</p>
+            <div class="pc-footer">
+              <span>⏱ ${escapeHTML(post.readTime)}</span>
+              <span class="pc-read">Leer más →</span>
+            </div>
+          </div>
+        </a>`;
+    }).join('');
+  }
+
+  const btn = document.getElementById('loadMoreBtn');
+  btn.style.display = posts.length > visibleCount ? 'inline-flex' : 'none';
+}
+
 function filterPosts(cat, btn){
+  currentCategory = cat;
+  visibleCount = 6;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
-  document.querySelectorAll('.post-card').forEach(c=>{
-    const show = cat==='Todos' || c.dataset.cat===cat;
-    c.style.display = show ? 'flex' : 'none';
-  });
+  renderPosts();
 }
+
+function loadMorePosts(){
+  visibleCount += 6;
+  renderPosts();
+}
+
+async function loadBlog(){
+  try{
+    const response = await fetch(BLOG_DATA_URL);
+    if(!response.ok) throw new Error(`No se pudo cargar ${BLOG_DATA_URL}`);
+    const data = await response.json();
+    allPosts = normalizePosts(data);
+    renderFeatured();
+    renderFilters();
+    renderTopics();
+    renderPosts();
+  }catch(error){
+    console.error(error);
+    document.getElementById('featuredWrap').innerHTML = `<div class="empty-state"><strong>No pude cargar el blog.</strong><br>Verifica que el archivo esté en <code>data/blog.json</code> y abre la página con Live Server, no con <code>file:///</code>.</div>`;
+    document.getElementById('postsGrid').innerHTML = `<div class="empty-state"><strong>Error al leer <code>data/blog.json</code>.</strong><br>Revisa la ruta, el nombre del archivo y que el JSON esté bien escrito.</div>`;
+  }
+}
+
+loadBlog();
 </script>
 </body>
 </html>

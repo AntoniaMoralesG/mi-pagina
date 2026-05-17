@@ -15,7 +15,7 @@
     "categoria": "Robótica",
     "icono": "🏎️",
     "enlace": "proyectos/robot-racer.html",
-    "destacado": false,
+    "visible": false,
     "fecha": "2026",
     "tecnologias": ["Arduino Nano", "Sensores IR", "Control", "Electrónica"]
   },

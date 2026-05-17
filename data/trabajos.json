@@ -1,0 +1,25 @@
+[
+  {
+    "visible": true,
+    "fecha": [
+      "16 de mayo",
+      "de 2026"
+    ],
+    "titulo": "Desarrollo de mi página web personal",
+    "descripcion": "Comencé el diseño y desarrollo de mi página web personal como un espacio para presentar mi perfil, mis proyectos, intereses académicos y trabajo relacionado con física, programación, robótica e innovación. El proceso incluyó diseño visual, estructura de secciones, edición en HTML, CSS y JavaScript, y publicación mediante GitHub Pages.",
+    "imagen": "Recursos/Imagenes/pagina-web.png",
+    "alt": "Página web personal",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "GitHub Pages",
+      "Portafolio"
+    ],
+    "accion": {
+      "tipo": "boton",
+      "texto": "Ver proyecto →",
+      "url": "Proyectos/pagina_web_personal.html"
+    }
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "Cómo construí mi primera página web personal",
+    "descripcion": "Reflexión sobre el proceso de diseñar, programar y publicar mi primera página web como espacio para proyectos, aprendizaje e innovación.",
+    "categoria": "Desarrollo web",
+    "icono": "🌐",
+    "fecha": "Mayo 2026",
+    "lectura": "5 min lectura",
+    "enlace": "Blog/primera-pagina-web.html",
+    "destacado": true
+  },
+  {
+    "titulo": "Lo que estoy aprendiendo con el Robot Racer",
+    "descripcion": "Notas sobre sensores, electrónica, control y programación embebida aplicadas al desarrollo de un robot velocista.",
+    "categoria": "Robótica",
+    "icono": "🏎️",
+    "fecha": "Mayo 2026",
+    "lectura": "6 min lectura",
+    "enlace": "Blog/robot-racer-aprendizajes.html",
+    "destacado": false
+  },
+  {
+    "titulo": "Física, código y prototipos",
+    "descripcion": "Una mirada personal sobre cómo la física puede transformarse en simulaciones, circuitos, robots y sistemas reales.",
+    "categoria": "Física aplicada",
+    "icono": "⚛️",
+    "fecha": "Mayo 2026",
+    "lectura": "4 min lectura",
+    "enlace": "Blog/fisica-codigo-prototipos.html",
+    "destacado": false
+  }
+]

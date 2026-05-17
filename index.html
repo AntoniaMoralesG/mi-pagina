@@ -1220,56 +1220,10 @@
         <p class="section-label">✦ Pensamientos & Aprendizajes</p>
         <h2 class="section-title">Mi <span>Blog</span></h2>
       </div>
-      <a href="#blog" class="section-link">Ver todas las entradas →</a>
+      <a href="blog.html" class="section-link">Ver todas las entradas →</a>
     </div>
 
-    <div class="blog-grid">
-
-      <!-- Featured post -->
-      <a href="#" class="blog-card featured">
-        <div class="blog-card-banner purple">🤖</div>
-        <div class="blog-card-body">
-          <span class="blog-tag">Robótica</span>
-          <h3 class="blog-card-title">Cómo construí mi primer brazo robótico con Arduino y lógica de control PID</h3>
-          <p class="blog-card-excerpt">
-            Después de meses de pruebas, fallos y reajustes, finalmente logré que mi brazo robótico siguiera trayectorias suaves. Te cuento todo el proceso: desde los cálculos cinemáticos hasta el código de control, y qué aprendí en el camino.
-          </p>
-          <div class="blog-card-meta">
-            <span class="date">8 mayo, 2025</span>
-            <span class="read-time">8 min lectura</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 2 -->
-      <a href="#" class="blog-card">
-        <div class="blog-card-banner pink">⚡</div>
-        <div class="blog-card-body">
-          <span class="blog-tag">Electrónica</span>
-          <h3 class="blog-card-title">Filtros analógicos: cuándo usar Butterworth y cuándo Chebyshev</h3>
-          <p class="blog-card-excerpt">Una guía práctica para elegir el filtro correcto según tu aplicación real.</p>
-          <div class="blog-card-meta">
-            <span class="date">21 abril, 2025</span>
-            <span class="read-time">5 min lectura</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 3 -->
-      <a href="#" class="blog-card">
-        <div class="blog-card-banner blue">🐍</div>
-        <div class="blog-card-body">
-          <span class="blog-tag">Programación</span>
-          <h3 class="blog-card-title">Simulación de sistemas físicos con Python y SciPy: mi flujo de trabajo</h3>
-          <p class="blog-card-excerpt">Cómo paso de las ecuaciones diferenciales a una simulación interactiva en menos de 50 líneas.</p>
-          <div class="blog-card-meta">
-            <span class="date">3 abril, 2025</span>
-            <span class="read-time">6 min lectura</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
+    <div class="blog-grid" id="blogDestacado"></div>
   </section>
 
   <!-- CONTACTO -->
@@ -1284,21 +1238,18 @@
 
       <!-- Col 2: links -->
       <div class="contacto-links">
-        <a href="mailto:antoniamoralesg2002@gmail.com" class="contacto-link">
+        <a href="mailto:antonia.morales.gut@gmail.com" class="contacto-link">
           <span class="ci ci-mail">✉️</span>
-          antoniamoralesg2002@gmail.com
+          antonia.morales.gut@gmail.com
         </a>
-        <span class="contacto-link">
-          <span class="ci ci-loc">📍</span>
-          Concepción, Chile
         </span>
         <a href="https://www.linkedin.com/in/antonia-morales-guti%C3%A9rrez-534b05297/" target="_blank" class="contacto-link">
           <span class="ci ci-li">in</span>
           linkedin.com/in/antonia-morales
         </a>
-        <a href="https://github.com/antonia-morales" target="_blank" class="contacto-link">
+        <a href="https://github.com/AntoniaMoralesG" target="_blank" class="contacto-link">
           <span class="ci ci-gh">⌥</span>
-          github.com/antonia-morales
+          github.com/AntoniaMoralesG
         </a>
       </div>
 
@@ -1349,7 +1300,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">A<span>M</span></div>
-    <p class="footer-copy">© 2024 Antonia Morales. Todos los derechos reservados.</p>
+    <p class="footer-copy">© 2026 Antonia I. Morales Gutierréz Todos los derechos reservados.</p>
     <p class="footer-tagline">Ciencia. Tecnología. Creatividad. Impacto.</p>
     <button class="like-btn" id="likeBtn" onclick="toggleLike()">
       <span class="heart" id="heartIcon">🤍</span>
@@ -1386,6 +1337,7 @@
     }
 
     cargarProyectosDestacados();
+    cargarBlogDestacado();
     renderLikes();
   });
 
@@ -1466,143 +1418,49 @@
 
       contenedor.innerHTML = `
         <p style="color: var(--mid); font-size: .9rem;">
-          No se pudieron cargar los proyectos destacados. Revisa que exista la carpeta <strong>data/proyectos.json</strong>.
+          No se pudieron cargar los proyectos destacados. Revisa que exista <strong>data/proyectos.json</strong>.
         </p>
       `;
     }
   }
 
-  // ── CONTACT FORM → mailto ──
-  window.enviarMensaje = function () {
-    const nombre = document.getElementById("f-nombre").value.trim();
-    const email = document.getElementById("f-email").value.trim();
-    const msg = document.getElementById("f-msg").value.trim();
-    const status = document.getElementById("form-status");
-
-    if (!nombre || !email || !msg) {
-      status.textContent = "Por favor completa todos los campos.";
-      status.className = "form-msg err";
-      return;
-    }
-
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!re.test(email)) {
-      status.textContent = "Ingresa un email válido.";
-      status.className = "form-msg err";
-      return;
-    }
-
-    const subject = encodeURIComponent(`Contacto desde tu portfolio — ${nombre}`);
-    const body = encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\n\n${msg}`);
-
-    window.location.href = `mailto:antonia.morales.gut@gmail.com?subject=${subject}&body=${body}`;
-
-    status.textContent = "¡Abriendo tu cliente de correo! 📬";
-    status.className = "form-msg ok";
-
-    document.getElementById("f-nombre").value = "";
-    document.getElementById("f-email").value = "";
-    document.getElementById("f-msg").value = "";
-  };
-</script><script>
-  // ── TEMA CLARO / OSCURO ──
-  window.toggleTheme = function () {
-    const body = document.body;
-    const btn = document.getElementById("themeToggle");
-
-    const dark = body.classList.toggle("dark");
-
-    if (btn) {
-      btn.textContent = dark ? "🌙" : "☀️";
-    }
-
-    localStorage.setItem("am_theme", dark ? "dark" : "light");
-  };
-
-  // Restaurar tema guardado
-  document.addEventListener("DOMContentLoaded", function () {
-    const savedTheme = localStorage.getItem("am_theme");
-    const btn = document.getElementById("themeToggle");
-
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      if (btn) btn.textContent = "🌙";
-    } else {
-      document.body.classList.remove("dark");
-      if (btn) btn.textContent = "☀️";
-    }
-
-    cargarProyectosDestacados();
-    renderLikes();
-  });
-
-  // ── LIKES ──
-  const LIKE_KEY = "am_portfolio_likes";
-  const LIKED_KEY = "am_portfolio_liked";
-
-  function getLikes() {
-    return parseInt(localStorage.getItem(LIKE_KEY) || "127", 10);
-  }
-
-  function renderLikes() {
-    const liked = localStorage.getItem(LIKED_KEY) === "1";
-    const btn = document.getElementById("likeBtn");
-    const likeCount = document.getElementById("likeCount");
-    const heartIcon = document.getElementById("heartIcon");
-
-    if (!btn || !likeCount || !heartIcon) return;
-
-    likeCount.textContent = getLikes();
-    heartIcon.textContent = liked ? "🩷" : "🤍";
-    btn.classList.toggle("liked", liked);
-  }
-
-  window.toggleLike = function () {
-    const liked = localStorage.getItem(LIKED_KEY) === "1";
-    const cur = getLikes();
-
-    if (liked) {
-      localStorage.setItem(LIKE_KEY, cur - 1);
-      localStorage.removeItem(LIKED_KEY);
-    } else {
-      localStorage.setItem(LIKE_KEY, cur + 1);
-      localStorage.setItem(LIKED_KEY, "1");
-    }
-
-    renderLikes();
-  };
-
-  // ── CARGAR PROYECTOS DESDE JSON ──
-  async function cargarProyectosDestacados() {
-    const contenedor = document.getElementById("proyectosDestacados");
+  // ── CARGAR BLOG DESDE JSON ──
+  async function cargarBlogDestacado() {
+    const contenedor = document.getElementById("blogDestacado");
 
     if (!contenedor) return;
 
     try {
-      const respuesta = await fetch("./data/proyectos.json");
+      const respuesta = await fetch("./data/blog.json");
 
       if (!respuesta.ok) {
-        throw new Error("No se encontró ./data/proyectos.json");
+        throw new Error("No se encontró ./data/blog.json");
       }
 
-      const proyectos = await respuesta.json();
+      const posts = await respuesta.json();
 
-      const destacados = proyectos
-        .filter(function (proyecto) {
-          return proyecto.destacado === true;
+      const destacados = posts
+        .filter(function (post) {
+          return post.destacado === true;
         })
-        .slice(0, 4);
+        .slice(0, 3);
 
       contenedor.innerHTML = destacados
-        .map(function (proyecto) {
+        .map(function (post, index) {
+          const clase = index === 0 ? "blog-card featured" : "blog-card";
+          const color = index === 0 ? "purple" : index === 1 ? "pink" : "blue";
+
           return `
-            <a href="${proyecto.enlace}" class="proyecto-card">
-              <div class="proyecto-img-ph ph-purple">${proyecto.icono}</div>
-              <div class="proyecto-body">
-                <div class="proyecto-title">${proyecto.titulo}</div>
-                <p class="proyecto-desc">${proyecto.descripcion}</p>
-                <span class="proyecto-tag">${proyecto.categoria}</span>
+            <a href="${post.enlace}" class="${clase}">
+              <div class="blog-card-banner ${color}">${post.icono}</div>
+              <div class="blog-card-body">
+                <span class="blog-tag">${post.categoria}</span>
+                <h3 class="blog-card-title">${post.titulo}</h3>
+                <p class="blog-card-excerpt">${post.descripcion}</p>
+                <div class="blog-card-meta">
+                  <span class="date">${post.fecha}</span>
+                  <span class="read-time">${post.lectura}</span>
+                </div>
               </div>
             </a>
           `;
@@ -1610,11 +1468,11 @@
         .join("");
 
     } catch (error) {
-      console.error("Error cargando proyectos:", error);
+      console.error("Error cargando blog:", error);
 
       contenedor.innerHTML = `
         <p style="color: var(--mid); font-size: .9rem;">
-          No se pudieron cargar los proyectos destacados. Revisa que exista la carpeta <strong>data/proyectos.json</strong>.
+          No se pudieron cargar las entradas del blog. Revisa que exista <strong>data/blog.json</strong>.
         </p>
       `;
     }

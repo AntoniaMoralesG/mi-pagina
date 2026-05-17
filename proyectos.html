@@ -20,12 +20,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);ove
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 5vw;background:rgba(247,243,251,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .35s}
 body.dark nav{background:rgba(15,11,26,.9)}
 .nav-left{display:flex;align-items:center;gap:.9rem}
-.logo-badge{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--lavender);display:flex;align-items:center;justify-content:center;position:relative;text-decoration:none}
+.logo-badge{width:42px;height:42px;border-radius:50%;border:2px solid var(--lavender);display:flex;align-items:center;justify-content:center;position:relative;text-decoration:none}
 .logo-text{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--dark);letter-spacing:-.02em}
 .logo-text span{color:var(--lavender)}
-.logo-star{position:absolute;top:-4px;right:-4px;font-size:.55rem;color:var(--pink)}
+.logo-star{position:absolute;top:-5px;right:-4px;font-size:.55rem;color:var(--pink)}
 .nav-name-block{display:flex;flex-direction:column;line-height:1.2}
-.nav-fullname{font-size:.82rem;font-weight:600;color:var(--dark);letter-spacing:.04em}
+.nav-fullname{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;letter-spacing:-0.01em;text-transform:none;color:var(--dark);white-space:nowrap}
 .nav-subtitle{font-size:.7rem;font-weight:400;color:var(--pink)}
 nav ul{list-style:none;display:flex;gap:1.8rem}
 nav ul a{text-decoration:none;font-size:.85rem;font-weight:500;color:var(--mid);transition:color .2s;position:relative;padding-bottom:3px;display:flex;flex-direction:column;align-items:center;gap:2px}
@@ -133,21 +133,20 @@ footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2r
 
 <nav>
   <div class="nav-left">
-    <a href="index.hmtl" class="logo-badge">
+    <a href="index.html" class="logo-badge">
       <span class="logo-text">A<span>M</span></span>
       <span class="logo-star">✦</span>
     </a>
     <div class="nav-name-block">
       <span class="nav-fullname">Antonia I. Morales Gutiérrez</span>
-      <span class="nav-subtitle">Ingeniería en Física</span>
     </div>
   </div>
   <ul>
-    <li><a href="index.hmtl"><span class="nav-icon"></span>Inicio</a></li>
+    <li><a href="index.html"><span class="nav-icon"></span>Inicio</a></li>
     <li><a href="proyectos.html" class="active"><span class="nav-icon"></span>Proyectos</a></li>
     <li><a href="sobre-mi.html"><span class="nav-icon"></span>Sobre mí</a></li>
     <li><a href="blog.html"><span class="nav-icon"></span>Blog</a></li>
-    <li><a href="index.hmtl#contacto"><span class="nav-icon"></span>Contacto</a></li>
+    <li><a href="index.html#contacto"><span class="nav-icon"></span>Contacto</a></li>
   </ul>
   <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️</button>
 </nav>
@@ -287,7 +286,7 @@ footer{background:var(--card-bg);border-top:1px solid var(--border);padding:1.2r
 
 <footer>
   <div class="footer-sig">Antonia I. Morales Gutiérrez ♡</div>
-  <span class="footer-copy">© 2026 Antonia I. Morales Gutiérrez. Todos los derechos reservados.</span>
+  <span class="footer-copy">© 2026 Antonia I. Morales Gutiérrez Todos los derechos reservados.</span>
  <span class="footer-formula">ΔE = hν</span>
 </footer>
 
